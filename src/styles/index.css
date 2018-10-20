@@ -1,0 +1,346 @@
+@font-face {
+    font-family: "QrLedNum";
+    src: url('../assets/fonts/quartz_regular-webfont.eot');
+    src: url('../assets/fonts/quartz_regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/quartz_regular-webfont.woff') format('woff'),
+        url('../assets/fonts/quartz_regular-webfont.ttf')  format('truetype'),
+        url('../assets/fonts/quartz_regular-webfont.svg#QrLedNum') format('svg');
+}
+html {
+    font-size : 10px;
+}
+@media only screen and (max-width: 1560px){
+    html {
+        font-size: 18px !important; 
+    }
+}
+@media only screen and (max-width: 1420px){
+    html {
+        font-size: 16px !important; 
+    }
+}
+@media only screen and (max-width: 1260px){
+    html {
+        font-size: 14px !important; 
+    }
+}
+@media only screen and (max-width: 1100px){
+    html {
+        font-size: 12px !important; 
+    }
+}
+@media only screen and (min-width: 1560px){
+    html {
+        font-size: 20px !important; 
+    }
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    /*background-image: url(./images/image_bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;*/
+    color: #f6fbfc;
+    font-family: 微软雅黑;
+    background-color: #020613;
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+    -webkit-appearance: none;
+}
+input::-ms-clear{display:none;}
+input, section, div, select, ul {outline: none; font-family: 微软雅黑;}
+textarea { -webkit-appearance: none; }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;} 
+table{border-collapse:collapse;border-spacing: 0;} 
+fieldset,img{border:0;} 
+address,caption,cite,code,dfn,em,strong,th,var{font-style: normal;font-weight: normal;} 
+ol,ul{list-style:none;} 
+caption,th{text-align: left;} 
+h1,h2,h3,h4,h5,h6{font-size: 100%;font-weight: normal} 
+q:before,q:after{content:'';} 
+abbr,acronym{border:0;}
+i{font-style: normal;}
+a { text-decoration: none; -webkit-tap-highlight-color: rgba(0,0,0,0); color: inherit;}
+input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+.bdbox, .i-border-box, .i-border-box * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.f12{font-size: 12px;}
+.f14{font-size: 14px;}
+.box{display:-moz-box; display:-webkit-box; display:box;display: -ms-flexbox;}
+.box .flex1{-moz-box-flex:1; -webkit-box-flex:1; box-flex:1;display: block;-ms-flex:1;}
+.box .flex2{-moz-box-flex:2; -webkit-box-flex:2; box-flex:2;display: block;-ms-flex:2;}
+.hide{display: none;}
+.hide-im{display: none !important;}
+.nowrap{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.page {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.page.in {
+    transform: translateX(0);
+}
+.page.out {
+    transform: translateX(-100%);
+}
+
+.header-logo {
+    margin: 18px 20px;
+}
+.desktop-header {
+    box-shadow: none;
+}
+.side-left,
+.center,
+.side-right {
+    display: inline-block;
+    width: 30%;
+    float: left;
+    margin-top: 65px;
+    text-align: center;
+}
+.side-right {
+    margin-top: 50px;
+}
+.center {
+    width: 40%;
+}
+/*车辆统计*/
+.i-card-carnum {
+    margin-top: 3.5rem;
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+.i-card-carnum .i-card-title {
+    color: #f6fbfc;
+}
+.i-card {
+    position: relative;
+    display: inline-block;
+    width: 33.333333%
+}
+.i-card:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2.4rem;
+    border-left: 1px solid #231f28;
+    right: 0;
+    top: 0.8rem;
+}
+.i-card:last-child:after {
+    display: none;
+}
+.i-card-num {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 1.6rem;
+    background: linear-gradient(to bottom, #00ffe7, #09e7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #00ffe7;
+}
+.i-card-color1 .i-card-num {
+    background: linear-gradient(to bottom, #00ffe7, #09e7ff);
+    -webkit-background-clip: text;
+    color: #00ffe7;
+}
+.i-card-color2 .i-card-num {
+    background: linear-gradient(to bottom, #2af8ff, #53c4ff);
+    -webkit-background-clip: text;
+    color: #2af8ff;
+}
+.i-card-color3 .i-card-num {
+    background: linear-gradient(to bottom, #04ff6f, #00ddaa);
+    -webkit-background-clip: text;
+    color: #04ff6f;
+}
+/*地图*/
+.map3d-title {
+    text-align: left;
+    font-size: 0.8rem;
+}
+.chart-desktopmap-wrapper{
+    margin-top: 5px;
+    max-width: 755px;
+    font-size: 0.6rem;
+}
+.i-card-mileage {
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+/*活跃率、车型*/
+.online-chart,
+.cartype-chart {
+    height: 8rem;
+}
+.i-card-card2 {
+    clear: both;
+    margin-top: 10px;
+}
+.i-card-online {
+    margin-top: 2rem;
+    overflow: hidden;
+}
+.i-card-cartype {
+    margin-top: 1rem;
+}
+.i-card-circle-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    margin-top: 1.5rem;
+    background: url(../assets/images/image_round.png) no-repeat center;
+    background-size: contain;
+    font-size: 12px;
+    color: #3decfe;
+    line-height: 4.5rem;
+}
+.i-card-circle-wrapper.i-card-circle-up:after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 0.8rem;
+    background: url(../assets/images/icon_clzx_ss.png) no-repeat center;
+    background-size: contain;
+}
+.i-card-online .i-car-circle-content {
+    height: 100%;
+    background: url(../assets/images/icon_clzx_hy.png) no-repeat center;
+    background-size: 60%;
+}
+.i-card-cartype .i-car-circle-content {
+    height: 100%;
+    background: url(../assets/images/icon_clzx_cx.png) no-repeat center;
+    background-size: 60%;
+}
+.i-card-circle-wrapper .i-card-num {
+    background: linear-gradient(to bottom, #72ffbe, #3decfe);
+    -webkit-background-clip: text;
+    color: #72ffbe;
+    font-size: 2.5rem;
+}
+.i-card-cartype .i-card-circle-wrapper {
+    line-height: 5rem;
+}
+.i-card-title {
+    text-align: center;
+    color: #00dcfb;
+    font-size: 0.7rem;
+}
+.i-card-title.text-underline {
+    background: url(../assets/images/text_underline.png) no-repeat center bottom;
+    padding-bottom: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.i-card-child-title {
+    text-align: center;
+    color: #fff;
+    font-size: 0.6rem;
+}
+.i-card-num-wrapper {
+    width: 40%;
+    float: left;
+}
+.i-card-chart-wrapper {
+    width: 60%;
+    float: left;
+}
+/*里程*/
+.i-card-mileage {
+    margin-top: 2rem;
+}
+.i-card-mileage .i-card:after {
+    top: 3rem;
+    height: 3rem;
+    border-color: #104f5f;
+}
+.i-card-mileage .i-card {
+    background: url(../assets/images/icon_ljrdq.png) no-repeat center top;
+    padding-top: 4rem;
+    background-size: 5rem;
+}
+.i-card-mileage .i-card-color1 {
+    background-image: url(../assets/images/icon_ljrdq.png);
+}
+.i-card-mileage .i-card-color2 {
+    background-image: url(../assets/images/icon_zhjp.png);
+}
+.i-card-mileage .i-card-color3 {
+    background-image: url(../assets/images/icon_xdyzz.png);
+}
+.mileage-num {
+    font-family: QrLedNum;
+    font-size: 2.3rem;
+    color: #fff;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+.mileage-num i {
+    border: 1px solid #00232a;
+    margin-left: -1px;
+    padding: 0 5px;
+}
+/*车系*/
+.series-chart{
+    height: 7rem;
+}
+/*热力图*/
+.hot-chart {
+    height: 9rem;
+}
+/*在线省份统计*/
+.province-chart {
+    font-size: 0.6rem;
+    line-height: 1;
+}
+.process-row {
+    margin-top: 0.3rem;
+}
+.process-row-name {
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+.process-row-value {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+.process-wrapper {
+    display: inline-block;
+    height: 6px;
+    width: 10rem;
+    margin-left: 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    position: relative;
+    background-color: rgba(255,255,255,0.2);
+}
+.process {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(to right,#00c0d9, #00f5ef);
+    background: -o-linear-gradient(to right,#00c0d9, #00f5ef);
+    background: -moz-linear-gradient(to right,#00c0d9, #00f5ef);
+    background: -ms-linear-gradient(to right,#00c0d9, #00f5ef);
+    background: linear-gradient(to right,#00c0d9, #00f5ef);
+}
+.province-chart .hightlight-text {
+    color: #00dcfb;
+}
