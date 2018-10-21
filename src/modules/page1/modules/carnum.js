@@ -1,20 +1,15 @@
-define(['jquery', 'tool'], function ($, Tool) {
-    var $page = $('#page1');
-    var $doms = {};
-    return {
-        init: function() {
-            $doms = {
-                total: $page.find('.js-total'),
-                online: $page.find('.js-online'),
-                offline: $page.find('.js-offline'),
-                activePer: $page.find('.js-active-per')
-            };
-        },
-        update: function(data) {
-            ['total', 'online', 'offline'].forEach(function(key) {
-                $doms[key].html(Tool.formatNumber(data[key]));
-            });
-            $doms.activePer.html(Math.round(data.active / data.total * 100));
-        }
-    };
-});
+import { formatNumber } from '@/utils/tool'
+const page = document.querySelector('#page1')
+const doms = {
+    total: page.querySelector('.js-total'),
+    online: page.querySelector('.js-online'),
+    offline: page.querySelector('.js-offline'),
+    activePer: page.querySelector('.js-active-per')
+}
+const update = function(data) {
+    ['total', 'online', 'offline'].forEach(function (key) {
+        doms[key].innerHTML = formatNumber(data[key]);
+    })
+    doms.activePer.innerHTML = Math.round(data.active / data.total * 100)
+}
+export default { update }

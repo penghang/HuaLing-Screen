@@ -62,13 +62,14 @@ i{font-style: normal;}
 a { text-decoration: none; -webkit-tap-highlight-color: rgba(0,0,0,0); color: inherit;}
 input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
 .bdbox, .i-border-box, .i-border-box * {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 .f12{font-size: 12px;}
 .f14{font-size: 14px;}
 .hide{display: none;}
 .hide-im{display: none !important;}
-.nowrap{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.nowrap{white-space: nowrap;overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;}
 .page {
     position: absolute;
     top: 0;
@@ -76,17 +77,22 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     height: 100%;
 }
 .page.in {
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0);
 }
 .page.out {
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
 }
 
 .header-logo {
     margin: 18px 20px;
 }
 .desktop-header {
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 .side-left,
 .center,
@@ -133,22 +139,34 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     font-family: Roboto;
     font-weight: bold;
     font-size: 1.6rem;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ffe7), to(#09e7ff));
+    background: -webkit-linear-gradient(top, #00ffe7, #09e7ff);
+    background: -o-linear-gradient(top, #00ffe7, #09e7ff);
     background: linear-gradient(to bottom, #00ffe7, #09e7ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: #00ffe7;
 }
 .i-card-color1 .i-card-num {
+    background: -webkit-gradient(linear, left top, left bottom, from(#00ffe7), to(#09e7ff));
+    background: -webkit-linear-gradient(top, #00ffe7, #09e7ff);
+    background: -o-linear-gradient(top, #00ffe7, #09e7ff);
     background: linear-gradient(to bottom, #00ffe7, #09e7ff);
     -webkit-background-clip: text;
     color: #00ffe7;
 }
 .i-card-color2 .i-card-num {
+    background: -webkit-gradient(linear, left top, left bottom, from(#2af8ff), to(#53c4ff));
+    background: -webkit-linear-gradient(top, #2af8ff, #53c4ff);
+    background: -o-linear-gradient(top, #2af8ff, #53c4ff);
     background: linear-gradient(to bottom, #2af8ff, #53c4ff);
     -webkit-background-clip: text;
     color: #2af8ff;
 }
 .i-card-color3 .i-card-num {
+    background: -webkit-gradient(linear, left top, left bottom, from(#04ff6f), to(#00ddaa));
+    background: -webkit-linear-gradient(top, #04ff6f, #00ddaa);
+    background: -o-linear-gradient(top, #04ff6f, #00ddaa);
     background: linear-gradient(to bottom, #04ff6f, #00ddaa);
     -webkit-background-clip: text;
     color: #04ff6f;
@@ -189,7 +207,7 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     width: 5rem;
     height: 5rem;
     margin-top: 1.5rem;
-    background: url(../assets/images/image_round.png) no-repeat center;
+    background: url(../assets/image_round-f6a2c.png) no-repeat center;
     background-size: contain;
     font-size: 12px;
     color: #3decfe;
@@ -202,20 +220,23 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     left: 0;
     width: 100%;
     height: 0.8rem;
-    background: url(../assets/images/icon_clzx_ss.png) no-repeat center;
+    background: url(../assets/icon_clzx_ss-19115.png) no-repeat center;
     background-size: contain;
 }
 .i-card-online .i-car-circle-content {
     height: 100%;
-    background: url(../assets/images/icon_clzx_hy.png) no-repeat center;
+    background: url(../assets/icon_clzx_hy-551b0.png) no-repeat center;
     background-size: 60%;
 }
 .i-card-cartype .i-car-circle-content {
     height: 100%;
-    background: url(../assets/images/icon_clzx_cx.png) no-repeat center;
+    background: url(../assets/icon_clzx_cx-25ae5.png) no-repeat center;
     background-size: 60%;
 }
 .i-card-circle-wrapper .i-card-num {
+    background: -webkit-gradient(linear, left top, left bottom, from(#72ffbe), to(#3decfe));
+    background: -webkit-linear-gradient(top, #72ffbe, #3decfe);
+    background: -o-linear-gradient(top, #72ffbe, #3decfe);
     background: linear-gradient(to bottom, #72ffbe, #3decfe);
     -webkit-background-clip: text;
     color: #72ffbe;
@@ -230,7 +251,7 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     font-size: 0.7rem;
 }
 .i-card-title.text-underline {
-    background: url(../assets/images/text_underline.png) no-repeat center bottom;
+    background: url(../assets/text_underline-8da6e.png) no-repeat center bottom;
     padding-bottom: 8px;
     margin-bottom: 1rem;
     font-size: 0.9rem;
@@ -258,12 +279,12 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     border-color: #104f5f;
 }
 .i-card-mileage .i-card {
-    background: url(../assets/images/icon_ljrdq.png) no-repeat center top;
+    background: url(../assets/icon_ljrdq-dd87a.png) no-repeat center top;
     padding-top: 4rem;
     background-size: 5rem;
 }
 .i-card-mileage .i-card-color1 {
-    background-image: url(../assets/images/icon_ljrdq.png);
+    background-image: url(../assets/icon_ljrdq-dd87a.png);
 }
 .i-card-mileage .i-card-color2 {
     /*background-image: url(../assets/images/icon_zhjp.png);*/
@@ -327,8 +348,9 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     border-radius: 3px;
     background: -webkit-linear-gradient(to right,#00c0d9, #00f5ef);
     background: -o-linear-gradient(to right,#00c0d9, #00f5ef);
-    background: -moz-linear-gradient(to right,#00c0d9, #00f5ef);
-    background: -ms-linear-gradient(to right,#00c0d9, #00f5ef);
+    background: -webkit-gradient(linear,left top, right top,from(#00c0d9), to(#00f5ef));
+    background: -webkit-linear-gradient(left,#00c0d9, #00f5ef);
+    background: -o-linear-gradient(left,#00c0d9, #00f5ef);
     background: linear-gradient(to right,#00c0d9, #00f5ef);
 }
 .province-chart .hightlight-text {

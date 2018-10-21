@@ -1,45 +1,47 @@
-define(['ajax'], function (Ajax) {
-    var Api = {
-        /**
-         * 车辆统计数
-         */
-        getCarNum: function() {
-            return Ajax({
-                url: 'getCarNum'
-            });
-        },
-        /**
-         * 各小时在线数
-         */
-        getTimeActive: function() {
-            return Ajax({
-                url: 'getTimeActive'
-            });
-        },
-        /**
-         * 经销商统计
-         */
-        getAgency: function() {
-            return Ajax({
-                url: 'getAgency'
-            });
-        },
-        /**
-         * 车系
-         */
-        getCarSeries: function() {
-            return Ajax({
-                url: 'getCarSeries'
-            });
-        },
-        /**
-         * 省份车辆统计
-         */
-        getProvinceCar: function() {
-            return Ajax({
-                url: 'getProvinceCar'
-            });
-        }
-    };
-    return Api;
-});
+import request from '@/utils/request'
+
+/**
+ * 车辆统计数
+ */
+export function getCarNum() {
+    return request({
+        url: 'getCarNum',
+        method: 'get'
+    });
+};
+/**
+ * 各小时在线数
+ */
+export function getTimeActive() {
+    return request({
+        url: 'getTimeActive',
+        method: 'get'
+    });
+};
+/**
+ * 经销商统计
+ */
+export function getAgency() {
+    return request({
+        url: 'getAgency',
+        method: 'get'
+    });
+};
+/**
+ * 车系
+ */
+export function getCarSeries() {
+    return request({
+        url: 'getCarSeries',
+        method: 'get'
+    });
+};
+/**
+ * 省份车辆统计
+ */
+export function getProvinceCar() {
+    return request({
+        url: 'getProvinceCar',
+        method: 'get'
+    });
+};
