@@ -74,6 +74,7 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     top: 0;
     width: 100%;
     height: 100%;
+    padding-top: 65px;
 }
 .page.in {
     transform: translateX(0);
@@ -91,14 +92,9 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
 .side-left,
 .center,
 .side-right {
-    display: inline-block;
-    width: 30%;
     float: left;
-    margin-top: 65px;
+    width: 30%;
     text-align: center;
-}
-.side-right {
-    margin-top: 50px;
 }
 .center {
     width: 40%;
@@ -154,14 +150,13 @@ input,ul,i {-webkit-tap-highlight-color: rgba(0,0,0,0);}
     color: #04ff6f;
 }
 /*地图*/
-.map3d-title {
-    text-align: left;
-    font-size: 0.8rem;
-}
 .chart-desktopmap-wrapper{
     margin-top: 5px;
     max-width: 755px;
     font-size: 0.6rem;
+}
+.map-chart {
+    height: 20rem;
 }
 .i-card-mileage {
     font-size: 0.6rem;

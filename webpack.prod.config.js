@@ -1,8 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const cleanWebpackPlugin = require('clean-webpack-plugin')
+const extractTextWebpackPlugin = require('extract-text-webpack-plugin')
 
 function resolve(dir) {
     return path.join(__dirname, './', dir)
@@ -13,6 +13,22 @@ module.exports = {
     entry: {
         app: './src/app.js',
         vendor: ['echarts']
+    },
+    devtool: 'cheap-source-map',
+    devServer: {
+        contentBase: resolve('dist'),
+        clientLogLevel: 'warning',
+        historyApiFallback: true,
+        hot: true,
+        compress: true,
+        host: 'localhost',
+        port: 9527,
+        open: true,
+        inline: true,
+        publicPath: './',
+        watchOptions: {
+            pool: true
+        }
     },
     output: {
         // publicPath: __dirname + 'dist/',
@@ -38,7 +54,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextWebpackPlugin.extract({
+                use: extractTextWebpackPlugin.extract({
                     fallback: {
                         loader: 'style-loader'
                     },
@@ -52,6 +68,12 @@ module.exports = {
                         'postcss-loader'
                     ]
                 })
+            },
+            {
+                test: /\.html$/,
+                include: /(src)/,
+                exclude: /(node_modules)/,
+                use: 'html-loader'
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
@@ -98,18 +120,20 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': require('./config/dev.env')
         }),
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
+        new cleanWebpackPlugin(['dist']),
+        // new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new htmlWebpackPlugin({
             // filename: 'index-[hash].html',
             template: 'index.html',
             // inject: 'head',
             title: '哈哈好的',
-            // minify: {
-            //     removeComments: true, // 删除注释
-            //     collapseWhitespace: true, // 删除空格
-            // }
+            minify: {
+                removeComments: true, // 删除注释
+                collapseWhitespace: true, // 删除空格
+            }
         }),
-        new ExtractTextWebpackPlugin({
+        new extractTextWebpackPlugin({
             filename: 'css/[name].[hash:8].bundle.css'
         })
     ],

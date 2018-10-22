@@ -1,10 +1,13 @@
 import { formatNumber } from '@/utils/tool'
-const page = document.querySelector('#page1')
-const doms = {
-    total: page.querySelector('.js-total'),
-    online: page.querySelector('.js-online'),
-    offline: page.querySelector('.js-offline'),
-    activePer: page.querySelector('.js-active-per')
+let page, doms
+const init = function () {
+    page = document.getElementById('page1')
+    doms = {
+        total: page.querySelector('.js-total'),
+        online: page.querySelector('.js-online'),
+        offline: page.querySelector('.js-offline'),
+        activePer: page.querySelector('.js-active-per')
+    }
 }
 const update = function(data) {
     ['total', 'online', 'offline'].forEach(function (key) {
@@ -12,4 +15,5 @@ const update = function(data) {
     })
     doms.activePer.innerHTML = Math.round(data.active / data.total * 100)
 }
-export default { update }
+console.log('load file modules/page1/modules/carnum.js')
+export default { init, update }

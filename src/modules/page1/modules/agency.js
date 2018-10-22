@@ -1,14 +1,5 @@
 import echarts from 'echarts'
-// // 引入柱状图
-// require('echarts/lib/chart/bar');
-// // 引入提示框和标题组件
-// require('echarts/lib/component/tooltip');
-// require('echarts/lib/component/title');
-const page = document.querySelector('#page1')
-const doms = {
-    num: page.querySelector('.js-agency-num'),
-    chart: page.querySelector('.js-agency-chart')
-}
+let page, doms, chart
 const defaults = {
     grid: {
         left: 50,
@@ -74,8 +65,15 @@ const defaults = {
         }
     ]
 }
-const chart = echarts.init(doms.chart)
-chart.setOption(defaults)
+const init = function () {
+    page = document.querySelector('#page1')
+    doms = {
+        num: page.querySelector('.js-agency-num'),
+        chart: page.querySelector('.js-agency-chart')
+    }
+    chart = echarts.init(doms.chart)
+    chart.setOption(defaults)
+}
 const update = function (data) {
     const x = [], y = []
     data.list.forEach(function (row) {
@@ -93,4 +91,5 @@ const update = function (data) {
     chart.setOption(option)
     doms.num.innerHTML = data.total
 }
-export default { update }
+console.log('load file modules/page1/modules/agency.js')
+export default { init, update }
