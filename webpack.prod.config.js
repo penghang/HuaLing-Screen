@@ -70,10 +70,34 @@ module.exports = {
                 })
             },
             {
+                test: /\.scss$/,
+                use: extractTextWebpackPlugin.extract({
+                    fallback: {
+                        loader: 'style-loader'
+                    },
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true
+                            }
+                        },
+                        'postcss-loader',
+                        'sass-loader'
+                    ]
+                })
+            },
+            {
                 test: /\.html$/,
                 include: /(src)/,
                 exclude: /(node_modules)/,
-                use: 'html-loader'
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true,
+                        conservativeCollapse: false
+                    }
+                }]
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,

@@ -11,7 +11,7 @@ const init = function () {
 }
 const update = function(data) {
     ['total', 'online', 'offline'].forEach(function (key) {
-        doms[key].innerHTML = formatNumber(data[key]);
+        doms[key].innerHTML = formatNumber(data[key])
     })
     doms.activePer.innerHTML = Math.round(data.active / data.total * 100)
 }

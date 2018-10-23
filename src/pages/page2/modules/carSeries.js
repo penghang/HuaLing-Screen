@@ -65,17 +65,17 @@ const defaults = {
         }
     ]
 }
-const init = function() {
-    page = document.getElementById('page1')
-    chart = echarts.init(page.querySelector('.js-carseries-chart'))
+const init = function () {
+    page = document.getElementById('page2')
+    chart = echarts.init(page.querySelector('.js-car-series-all-chart'))
     chart.setOption(defaults);
 }
-const update = function(data) {
-    const x = [], y = [];
+const update = function (data) {
+    const x = [], y = []
     data.forEach(function (row) {
-        x.push(row.name);
-        y.push(row.num);
-    });
+        x.push(row.name)
+        y.push(row.num)
+    })
     const option = {
         xAxis: {
             data: x
@@ -83,8 +83,8 @@ const update = function(data) {
         series: [{
             data: y
         }]
-    };
-    chart.setOption(option);
+    }
+    chart.setOption(option)
 }
-console.log('load file modules/page1/modules/carseries.js')
+console.log('load file modules/page2/modules/carSeriesAll.js')
 export default { init, update }

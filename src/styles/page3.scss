@@ -1,0 +1,45 @@
+.page3 {
+    .main {
+        height: 70%;
+        .left {
+            width: 35%;
+        }
+        .center {
+            width: 30%;
+        }
+        .right {
+            width: 35%;
+        }
+        .left, .right {
+            .chart-wrapper {
+                height: 50%;
+            }
+        }
+        .left, .center, .right {
+            float: left;
+            height: 100%;
+        }
+    }
+    .footer {
+        height: 30%;
+    }
+    .chart-wrapper {
+        height: 100%;
+        .chart {
+            height: 80%;
+        }
+    }
+    .chart-title {
+        position: relative;
+        text-indent: 10px;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to bottom, #2069e3, #1fb0cb)
+        }
+    }
+}

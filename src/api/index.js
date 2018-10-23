@@ -1,56 +1,7 @@
-import request from '@/utils/request'
+export * from './page1'
+export * from './page2'
+export * from './page3'
+export * from './page4'
+export * from './page5'
 
-/**
- * 车辆统计数
- */
-export function getCarNum() {
-    return request({
-        url: 'getCarNum',
-        method: 'get'
-    })
-}
-/**
- * 各小时在线数
- */
-export function getTimeActive() {
-    return request({
-        url: 'getTimeActive',
-        method: 'get'
-    })
-}
-/**
- * 经销商统计
- */
-export function getAgency() {
-    return request({
-        url: 'getAgency',
-        method: 'get'
-    })
-}
-/**
- * 车系
- */
-export function getCarSeries() {
-    return request({
-        url: 'getCarSeries',
-        method: 'get'
-    })
-}
-/**
- * 省份车辆统计
- */
-export function getProvinceCar() {
-    return request({
-        url: 'getProvinceCar',
-        method: 'get'
-    })
-}
-/**
- * 获取里程数据
- */
-export function getMileage() {
-    return request({
-        url: 'getMileage',
-        method: 'get'
-    })
-}
+console.log('load file api/index.js')

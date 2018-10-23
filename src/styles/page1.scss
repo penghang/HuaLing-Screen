@@ -1,0 +1,242 @@
+.page1 {
+    .side-left,
+    .center,
+    .side-right {
+        float: left;
+        width: 30%;
+        text-align: center;
+    }
+    .center {
+        width: 40%;
+    }
+    /*车辆统计*/
+    .i-card-carnum {
+        margin-top: 3.5rem;
+        font-size: 0.6rem;
+        line-height: 1.5;
+    }
+    .i-card-carnum .i-card-title {
+        color: #f6fbfc;
+    }
+    .i-card {
+        position: relative;
+        display: inline-block;
+        width: 33.333333%
+    }
+    .i-card:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2.4rem;
+        border-left: 1px solid #231f28;
+        right: 0;
+        top: 0.8rem;
+    }
+    .i-card:last-child:after {
+        display: none;
+    }
+    .i-card-num {
+        font-family: Roboto;
+        font-weight: bold;
+        font-size: 1.6rem;
+        background: linear-gradient(to bottom, #00ffe7, #09e7ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #00ffe7;
+    }
+    .i-card-color1 .i-card-num {
+        background: linear-gradient(to bottom, #00ffe7, #09e7ff);
+        -webkit-background-clip: text;
+        color: #00ffe7;
+    }
+    .i-card-color2 .i-card-num {
+        background: linear-gradient(to bottom, #2af8ff, #53c4ff);
+        -webkit-background-clip: text;
+        color: #2af8ff;
+    }
+    .i-card-color3 .i-card-num {
+        background: linear-gradient(to bottom, #04ff6f, #00ddaa);
+        -webkit-background-clip: text;
+        color: #04ff6f;
+    }
+    /*地图*/
+    .chart-desktopmap-wrapper{
+        margin-top: 5px;
+        max-width: 755px;
+        font-size: 0.6rem;
+    }
+    .map-chart {
+        height: 20rem;
+    }
+    .i-card-mileage {
+        font-size: 0.6rem;
+        line-height: 1.5;
+    }
+    /*活跃率、车型*/
+    .online-chart,
+    .cartype-chart {
+        height: 8rem;
+    }
+    .i-card-card2 {
+        clear: both;
+        margin-top: 10px;
+    }
+    .i-card-online {
+        margin-top: 2rem;
+        overflow: hidden;
+    }
+    .i-card-cartype {
+        margin-top: 1rem;
+    }
+    .i-card-circle-wrapper {
+        display: inline-block;
+        position: relative;
+        width: 5rem;
+        height: 5rem;
+        margin-top: 1.5rem;
+        background: url(../assets/images/image_round.png) no-repeat center;
+        background-size: contain;
+        font-size: 12px;
+        color: #3decfe;
+        line-height: 4.5rem;
+    }
+    .i-card-circle-wrapper.i-card-circle-up:after {
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        height: 0.8rem;
+        background: url(../assets/images/icon_clzx_ss.png) no-repeat center;
+        background-size: contain;
+    }
+    .i-card-online .i-car-circle-content {
+        height: 100%;
+        background: url(../assets/images/icon_clzx_hy.png) no-repeat center;
+        background-size: 60%;
+    }
+    .i-card-cartype .i-car-circle-content {
+        height: 100%;
+        background: url(../assets/images/icon_clzx_cx.png) no-repeat center;
+        background-size: 60%;
+    }
+    .i-card-circle-wrapper .i-card-num {
+        background: linear-gradient(to bottom, #72ffbe, #3decfe);
+        -webkit-background-clip: text;
+        color: #72ffbe;
+        font-size: 2.5rem;
+    }
+    .i-card-cartype .i-card-circle-wrapper {
+        line-height: 5rem;
+    }
+    .i-card-title {
+        text-align: center;
+        color: #00dcfb;
+        font-size: 0.7rem;
+    }
+    .i-card-title.text-underline {
+        background: url(../assets/images/text_underline.png) no-repeat center bottom;
+        padding-bottom: 8px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+    .i-card-child-title {
+        text-align: center;
+        color: #fff;
+        font-size: 0.6rem;
+    }
+    .i-card-num-wrapper {
+        width: 40%;
+        float: left;
+    }
+    .i-card-chart-wrapper {
+        width: 60%;
+        float: left;
+    }
+    /*里程*/
+    .i-card-mileage {
+        margin-top: 2rem;
+    }
+    .i-card-mileage .i-card:after {
+        top: 3rem;
+        height: 3rem;
+        border-color: #104f5f;
+    }
+    .i-card-mileage .i-card {
+        background: url(../assets/images/icon_ljrdq.png) no-repeat center top;
+        padding-top: 4rem;
+        background-size: 5rem;
+    }
+    .i-card-mileage .i-card-color1 {
+        background-image: url(../assets/images/icon_ljrdq.png);
+    }
+    .i-card-mileage .i-card-color2 {
+        /*background-image: url(../assets/images/icon_zhjp.png);*/
+    }
+    .i-card-mileage .i-card-color3 {
+        /*background-image: url(../assets/images/icon_xdyzz.png);*/
+    }
+    .mileage-num {
+        font-family: QrLedNum;
+        font-size: 2.3rem;
+        color: #fff;
+        vertical-align: middle;
+        margin: 0 10px;
+    }
+    .mileage-num i {
+        border: 1px solid #00232a;
+        margin-left: -1px;
+        padding: 0 5px;
+    }
+    /*车系*/
+    .series-chart{
+        height: 7rem;
+    }
+    /*热力图*/
+    .hot-chart {
+        height: 9rem;
+    }
+    /*在线省份统计*/
+    .province-chart {
+        font-size: 0.6rem;
+        line-height: 1;
+    }
+    .process-row {
+        margin-top: 0.3rem;
+    }
+    .process-row-name {
+        display: inline-block;
+        width: 60px;
+        text-align: right;
+    }
+    .process-row-value {
+        display: inline-block;
+        width: 100px;
+        text-align: left;
+    }
+    .process-wrapper {
+        display: inline-block;
+        height: 6px;
+        width: 10rem;
+        margin-left: 10px;
+        margin-right: 5px;
+        border-radius: 3px;
+        position: relative;
+        background-color: rgba(255,255,255,0.2);
+    }
+    .process {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        border-radius: 3px;
+        background: -webkit-linear-gradient(to right,#00c0d9, #00f5ef);
+        background: -o-linear-gradient(to right,#00c0d9, #00f5ef);
+        background: -moz-linear-gradient(to right,#00c0d9, #00f5ef);
+        background: -ms-linear-gradient(to right,#00c0d9, #00f5ef);
+        background: linear-gradient(to right,#00c0d9, #00f5ef);
+    }
+    .province-chart .hightlight-text {
+        color: #00dcfb;
+    }
+}

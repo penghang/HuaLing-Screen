@@ -1,11 +1,12 @@
 import pageTpl from './index.html'
 
-import CarNum from './modules/carnum'
+import CarNum from './modules/carNum'
 import Agency from './modules/agency'
-import TimeActive from './modules/timeactive'
-import CarSeries from './modules/carseries'
-import ProvinceCar from './modules/provincecar'
+import TimeActive from './modules/timeActive'
+import CarSeries from './modules/carSeries'
+import ProvinceCar from './modules/provinceCar'
 import Mileage from './modules/mileage'
+
 import { getCarNum, getAgency, getTimeActive, getCarSeries, getProvinceCar, getMileage } from '@/api'
 
 const init = function () {
@@ -39,3 +40,5 @@ getMileage().then(function(response) {
 })
 
 console.log('load file modules/page1/index.js')
+
+export default {}

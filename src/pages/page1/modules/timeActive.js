@@ -73,17 +73,17 @@ const defaults = {
 }
 const init = function () {
     page = document.getElementById('page1')
-    chart = echarts.init(page.querySelector('.js-timeactive-chart'));
-    chart.setOption(defaults);
+    chart = echarts.init(page.querySelector('.js-timeactive-chart'))
+    chart.setOption(defaults)
 }
 const update = function(data) {
-    const x = [], y = [];
-    let i = data.length - 1;
+    const x = [], y = []
+    let i = data.length - 1
     data.forEach(function (row) {
-        x[i] = row.time;
-        y[i] = row.count;
-        i--;
-    });
+        x[i] = row.time
+        y[i] = row.count
+        i--
+    })
     const option = {
         xAxis: {
             data: x
@@ -91,8 +91,8 @@ const update = function(data) {
         series: [{
             data: y
         }]
-    };
-    chart.setOption(option);
+    }
+    chart.setOption(option)
 }
 console.log('load file modules/page1/modules/timeactive.js')
 export default { init, update }
