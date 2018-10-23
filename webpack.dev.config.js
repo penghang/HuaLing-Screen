@@ -9,31 +9,30 @@ function resolve(dir) {
 
 module.exports = {
     mode: 'development',
-    entry: {
-        app: './src/app.js'
-    },
+    entry: './src/app.js',
     devtool: 'cheap-source-map',
     devServer: {
-        contentBase: resolve('dist'),
+        // contentBase: resolve('dist'),
         clientLogLevel: 'warning',
         historyApiFallback: true,
-        hot: true,
+        // hot: true,
         compress: true,
         host: 'localhost',
         port: 9527,
         open: true,
         inline: true,
-        publicPath: './',
+        // lazy: true,
+        // publicPath: './',
         watchOptions: {
             pool: true
         }
     },
-    output: {
-        path: resolve('dist'),
-        filename: 'js/[name]-[hash:8].bundle.js',
-        chunkFilename: 'js/[name].[hash:8].chunk.js',
-        publicPath: './'
-    },
+    // output: {
+    //     path: resolve('dist'),
+    //     filename: 'js/[name]-[hash:8].bundle.js',
+    //     chunkFilename: 'js/[name].[hash:8].chunk.js',
+    //     publicPath: './'
+    // },
     resolve: {
         extensions: ['.js'],
         alias: {
@@ -44,13 +43,24 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                // include: path.resolve(__dirname, 'src'),
                 exclude: /(node_modules|bower_components)/,
                 use: 'babel-loader'
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader']
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.html$/,
+                include: /(src)/,
+                exclude: /(node_modules)/,
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true,
+                        conservativeCollapse: false
+                    }
+                }]
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
@@ -78,7 +88,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': require('./config/dev.env')
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
             // filename: 'index-[hash].html',
             template: 'index.html',
@@ -88,9 +98,6 @@ module.exports = {
             //     removeComments: true, // 删除注释
             //     collapseWhitespace: true, // 删除空格
             // },
-        }),
-        new extractTextWebpackPlugin({
-            filename: 'css/[name].[hash:8].bundle.css'
         })
     ]
 }

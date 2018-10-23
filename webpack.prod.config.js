@@ -9,31 +9,13 @@ function resolve(dir) {
 }
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         app: './src/app.js',
         vendor: ['echarts']
     },
-    devtool: 'cheap-source-map',
-    devServer: {
-        contentBase: resolve('dist'),
-        clientLogLevel: 'warning',
-        historyApiFallback: true,
-        hot: true,
-        compress: true,
-        host: 'localhost',
-        port: 9527,
-        open: true,
-        inline: true,
-        publicPath: './',
-        watchOptions: {
-            pool: true
-        }
-    },
     output: {
-        // publicPath: __dirname + 'dist/',
         path: resolve('dist'),
-        // filename: 'js/[name]-[chunkhash].bundle.js',
         filename: 'js/[name]-[hash:8].bundle.js',
         chunkFilename: 'js/[name].[hash:8].chunk.js',
         publicPath: './'
@@ -48,26 +30,8 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                // include: path.resolve(__dirname, 'src'),
                 exclude: /(node_modules|bower_components)/,
                 use: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                use: extractTextWebpackPlugin.extract({
-                    fallback: {
-                        loader: 'style-loader'
-                    },
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true
-                            }
-                        },
-                        'postcss-loader'
-                    ]
-                })
             },
             {
                 test: /\.scss$/,
@@ -142,16 +106,15 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': require('./config/dev.env')
+            'process.env': require('./config/prod.env')
         }),
         new cleanWebpackPlugin(['dist']),
         // new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
             // filename: 'index-[hash].html',
             template: 'index.html',
             // inject: 'head',
-            title: '哈哈好的',
+            title: '大屏',
             minify: {
                 removeComments: true, // 删除注释
                 collapseWhitespace: true, // 删除空格
@@ -162,6 +125,7 @@ module.exports = {
         })
     ],
     optimization: {
+        minimize: true,
         //打包 第三方库
         //打包 公共文件
         splitChunks: {
