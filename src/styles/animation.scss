@@ -1,0 +1,41 @@
+.in {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 500ms;
+    animation-timing-function: ease-out;
+    animation-duration: 500ms;
+}
+.out {
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 300ms;
+    animation-timing-function: ease-in;
+    animation-duration: 300ms;
+}
+/* slide */
+.slide.in {
+    animation-name: slideinfrombottom;
+}
+.slide.out {
+    animation-name: slideouttotop;
+}
+.slide.in.reverse {
+    animation-name: slideinfromtop;
+}
+.slide.out.reverse {
+    animation-name: slideouttobottom;
+}
+@keyframes slideinfrombottom {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+@keyframes slideouttotop {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+}
+@keyframes slideinfromtop {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+@keyframes slideouttobottom {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+}

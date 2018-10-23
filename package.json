@@ -4,11 +4,38 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config webpack.dev.config.js",
+    "build-dev": "webpack --config webpack.prod.config.js --progress --display-modules --colors --display-reasons --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.21.0"
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "autoprefixer": "^9.2.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-dynamic-import-webpack": "^1.1.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.4.0",
+    "node-sass": "^4.9.4",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-preset-latest": "^6.24.1",
+    "echarts": "^4.2.0-rc.2",
+    "localforage": "^1.7.2"
   }
 }
