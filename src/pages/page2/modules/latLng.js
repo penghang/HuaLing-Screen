@@ -61,5 +61,5 @@ const init = function () {
 const update = function (data) {
     updateMapChart(data)
 }
-console.log('load file modules/page2/modules/carLatLng.js')
+console.log('load file modules/page2/modules/latLng.js')
 export default { init, update }

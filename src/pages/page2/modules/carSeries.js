@@ -72,7 +72,7 @@ const init = function () {
 }
 const update = function (data) {
     const x = [], y = []
-    data.forEach(function (row) {
+    data.forEach(row => {
         x.push(row.name)
         y.push(row.num)
     })
@@ -86,5 +86,5 @@ const update = function (data) {
     }
     chart.setOption(option)
 }
-console.log('load file modules/page2/modules/carSeriesAll.js')
+console.log('load file modules/page2/modules/carSeries.js')
 export default { init, update }

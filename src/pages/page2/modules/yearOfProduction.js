@@ -69,7 +69,6 @@ const update = function (data) {
         },
         series
     }
-    console.log(option)
     chart.setOption(option)
 }
 console.log('load file modules/page2/modules/yearOfProduction.js')

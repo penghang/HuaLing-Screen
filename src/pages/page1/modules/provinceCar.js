@@ -193,8 +193,8 @@ const updateHotChart = function(data) {
 }
 const updateMapChart = function(data) {
     let max = 0;
-    data.forEach(function (pc) {
-        const f = province.filter(function (p) {
+    data.forEach(pc => {
+        const f = province.filter(p => {
             return pc.name == p.name;
         })[0];
         if (f) {
@@ -224,7 +224,7 @@ const updateMapChart = function(data) {
 const updateProvinceList = function(data) {
     const chart = page.querySelector('.js-province-list');
     const frag = document.createDocumentFragment();
-    data.slice(0, 10).forEach(function (row) {
+    data.slice(0, 10).forEach(row => {
         const li = document.createElement('li');
         li.className = 'process-row';
         const name = document.createElement('span');

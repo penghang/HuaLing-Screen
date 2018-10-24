@@ -12,7 +12,7 @@ import {
     getProvinceCarSeriesAll, 
     getProvinceCarType, 
     getProvinceEngineType,
-    getProvinceLatLng,
+    getProvinceCarLatLng,
     getProvinceYearOfProduction
 } from '@/api'
 
@@ -39,7 +39,7 @@ getProvinceCarType().then(function (response) {
 getProvinceEngineType().then(function (response) {
     EngineType.update(response.data)
 })
-getProvinceLatLng().then(function (response) {
+getProvinceCarLatLng().then(function (response) {
     LatLng.update(response.data)
 })
 getProvinceYearOfProduction().then(function (response) {

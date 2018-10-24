@@ -72,7 +72,7 @@ const init = function () {
 }
 const update = function (data) {
     const x = [], y = []
-    data.forEach(function (row) {
+    data.forEach(row => {
         x.push(row.name)
         y.push(row.num)
     })

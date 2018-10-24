@@ -1,0 +1,27 @@
+.page5 {
+    .main {
+        height: 50%;
+    }
+    .footer {
+        height: 50%;
+    }
+    .chart-wrapper {
+        height: 100%;
+        .chart {
+            height: 80%;
+        }
+    }
+    .chart-title {
+        position: relative;
+        text-align: center;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to bottom, #2069e3, #1fb0cb)
+        }
+    }
+}

@@ -79,7 +79,7 @@ const init = function () {
 const update = function(data) {
     const x = [], y = []
     let i = data.length - 1
-    data.forEach(function (row) {
+    data.forEach(row => {
         x[i] = row.time
         y[i] = row.count
         i--

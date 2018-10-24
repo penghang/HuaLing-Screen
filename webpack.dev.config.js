@@ -15,7 +15,7 @@ module.exports = {
         // contentBase: resolve('dist'),
         clientLogLevel: 'warning',
         historyApiFallback: true,
-        // hot: true,
+        hot: true,
         compress: true,
         host: 'localhost',
         port: 9527,
@@ -88,7 +88,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': require('./config/dev.env')
         }),
-        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
             // filename: 'index-[hash].html',
             template: 'index.html',
