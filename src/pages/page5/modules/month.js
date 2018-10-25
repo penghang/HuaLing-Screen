@@ -1,4 +1,6 @@
 import echarts from 'echarts'
+import { eConfig, lineColors, mixColors } from '../../config'
+const { grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
 let page, chart
 const months = 12
 const xData = []
@@ -6,19 +8,20 @@ for (let i = 1; i <= months; i++) {
     xData.push(`${i}月`)
 }
 const defaults = {
-    grid: {
-        left: 50,
-        right: 20,
-        top: 20,
-        bottom: 20
+    grid,
+    legend: {
+        textStyle: {
+            color: '#c2d5d6'
+        },
+        data: []
     },
     xAxis: {
-        type: 'category',
+        ...xAxis,
         data: xData
     },
     yAxis: [
         {
-            type: 'value',
+            ...yAxis,
             name: '里程 (公里)'
         }
     ],
@@ -32,11 +35,13 @@ const init = function () {
 const update = function (data) {
     const legend = []
     const series = []
+    let i = 0
     for (let key in data) {
         legend.push(key)
         series.push({
             name: key,
             type: 'line',
+            color: lineColors[i++],
             data: data[key]
         })
     }

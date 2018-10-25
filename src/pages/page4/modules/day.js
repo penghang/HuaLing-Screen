@@ -1,23 +1,25 @@
 import echarts from 'echarts'
+import { eConfig, barColors } from '../../config'
+const { grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
+const { type, axisTick, axisLabel, axisLine } = yAxis
+const colorLength = barColors.length
 let page, chart
 const defaults = {
-    grid: {
-        left: 50,
-        right: 20,
-        top: 20,
-        bottom: 20
-    },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
+    grid,
+    xAxis,
     yAxis: [
         {
-            type: 'value',
+            ...yAxis,
             name: '里程 (公里)'
         },
         {
-            type: 'value',
+            type, 
+            axisTick, 
+            axisLabel, 
+            axisLine,
+            splitLine: {
+                show: false
+            },
             name: '运行时长 (H)'
         }
     ],
@@ -25,12 +27,16 @@ const defaults = {
         {
             name: '里程',
             type: 'bar',
+            barWidth: 50,
             data: []
         },
         {
             name: '运行时长',
             type: 'line',
             yAxisIndex: 1,
+            lineStyle: {
+                color: '#f25a1f'
+            },
             data: []
         }
     ]
@@ -44,10 +50,15 @@ const update = function (data) {
     const xAxisData = []
     const mileageData = []
     const timeData = []
-    data.forEach(row => {
-        xAxisData.push(row.name)
-        mileageData.push(row.mileage)
-        timeData.push(row.time)
+    data.forEach(({name, mileage, time}, i) => {
+        xAxisData.push(name)
+        mileageData.push({
+            value: mileage,
+            itemStyle: {
+                color: barColors[i % colorLength]
+            }
+        })
+        timeData.push(time)
     })
     const option = {
         xAxis: [{

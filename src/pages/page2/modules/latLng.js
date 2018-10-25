@@ -2,7 +2,7 @@ import echarts from 'echarts'
 import '@/lib/echarts4/china.correct.js'
 
 let page, mapChart
-
+const colors = ['#184ca9', '#305aa6']
 const initMapChart = function () {
     var option = {
         tooltip: {
@@ -20,8 +20,10 @@ const initMapChart = function () {
             silent: true,
             itemStyle: {
                 normal: {
-                    areaColor: 'transparent',
-                    borderColor: '#00454d'
+                    areaColor: '#020613',
+                    borderColor: '#0e1e43',
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(13, 29, 64, 1)'
                 }
             }
         },
@@ -32,7 +34,7 @@ const initMapChart = function () {
             symbolSize: 10,
             itemStyle: {
                 normal: {
-                    color: 'purple'
+                    color: colors[0]
                 }
             }
         }]

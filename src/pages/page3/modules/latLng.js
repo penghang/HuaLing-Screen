@@ -2,6 +2,7 @@ import echarts from 'echarts'
 import '@/lib/echarts4/province/beijing.js'
 
 let page, mapChart
+const colors = ['#184ca9', '#305aa6']
 const provinceName = {
     '北京': 'beijing',
     '天津': 'tianjing',
@@ -44,8 +45,9 @@ const initMapChart = function () {
             trigger: 'item'
         },
         geo: {
-            top: 0,
-            bottom: 0,
+            top: 100,
+            left: 20,
+            right: 40,
             map: '北京',
             label: {
                 emphasis: {
@@ -55,8 +57,10 @@ const initMapChart = function () {
             silent: true,
             itemStyle: {
                 normal: {
-                    areaColor: 'transparent',
-                    borderColor: '#00454d'
+                    areaColor: '#020613',
+                    borderColor: '#0e1e43',
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(13, 29, 64, 1)'
                 }
             }
         },

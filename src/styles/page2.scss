@@ -1,40 +1,22 @@
 .page2 {
     .main {
-        height: 70%;
+        height: 65%;
         .left {
             float: left;
-            width: 50%;
+            width: 40%;
             height: 100%;
         }
         .right {
             float: left;
-            width: 50%;
+            width: 60%;
             height: 100%;
             .chart-wrapper {
                 height: 50%;
+                padding-left: 48px;
             }
         }
     }
     .footer {
-        height: 30%;
-    }
-    .chart-wrapper {
-        height: 100%;
-        .chart {
-            height: 80%;
-        }
-    }
-    .chart-title {
-        position: relative;
-        text-indent: 10px;
-        &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            height: 100%;
-            width: 6px;
-            border-radius: 3px;
-            background: linear-gradient(to bottom, #2069e3, #1fb0cb)
-        }
+        height: 35%;
     }
 }

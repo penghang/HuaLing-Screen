@@ -1,4 +1,6 @@
 .page1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
     .side-left,
     .center,
     .side-right {
@@ -7,7 +9,10 @@
         text-align: center;
     }
     .center {
-        width: 40%;
+        width: 45%;
+    }
+    .side-right {
+        width: 25%;
     }
     /*车辆统计*/
     .i-card-carnum {
@@ -171,10 +176,10 @@
         background-image: url(../assets/images/icon_ljrdq.png);
     }
     .i-card-mileage .i-card-color2 {
-        /*background-image: url(../assets/images/icon_zhjp.png);*/
+        background-image: url(../assets/images/icon_zyh.png);
     }
     .i-card-mileage .i-card-color3 {
-        /*background-image: url(../assets/images/icon_xdyzz.png);*/
+        background-image: url(../assets/images/icon_zyxsj.png);
     }
     .mileage-num {
         font-family: QrLedNum;

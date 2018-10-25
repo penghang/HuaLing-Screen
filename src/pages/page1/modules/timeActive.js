@@ -1,45 +1,11 @@
 import echarts from 'echarts'
+import { eConfig } from '../../config'
+const { grid1: grid, xAxis1: xAxis, yAxis1: yAxis } = eConfig
 let page, chart
 const defaults = {
-    grid: {
-        left: 50,
-        right: 20,
-        top: 20,
-        bottom: 20
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        axisTick: {
-            inside: true
-        },
-        axisLabel: {
-            color: '#7b7e85'
-        },
-        axisLine: {
-            lineStyle: {
-                color: "#133b43"
-            }
-        },
-        data: []
-    },
-    yAxis: {
-        type: 'value',
-        axisTick: {
-            show: false  
-        },
-        axisLabel: {
-            color: '#7b7e85'
-        },
-        axisLine: {
-            lineStyle: {
-                color: "#133b43"
-            }
-        },
-        splitLine: {
-            show: false
-        }
-    },
+    grid,
+    xAxis,
+    yAxis,
     series: [{
         type: 'line',
         symbol: 'circle',

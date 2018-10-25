@@ -1,59 +1,12 @@
 import echarts from 'echarts'
+import { eConfig, color2 as color } from '../../config'
+const { grid1: grid, xAxis1: xAxis, yAxis1: yAxis } = eConfig
 let page, doms, chart
 const defaults = {
-    grid: {
-        left: 50,
-        right: 20,
-        top: 20,
-        bottom: 20
-    },
-    color: {
-        type: 'linear',
-        x: 0,
-        y: 0,
-        x2: 0,
-        y2: 1,
-        colorStops: [{
-            offset: 0,
-            color: '#16b1f9' // 0% 处的颜色
-        }, {
-            offset: 1,
-            color: '#00f1ff' // 100% 处的颜色
-        }],
-        globalCoord: false // 缺省为 false
-    },
-    xAxis: {
-        type: 'category',
-        axisTick: {
-            inside: true
-        },
-        axisLabel: {
-            color: '#7b7e85'
-        },
-        axisLine: {
-            lineStyle: {
-                color: "#133b43"
-            }
-        },
-        data: []
-    },
-    yAxis: {
-        type: 'value',
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            color: '#7b7e85'
-        },
-        axisLine: {
-            lineStyle: {
-                color: "#133b43"
-            }
-        },
-        splitLine: {
-            show: false
-        }
-    },
+    grid,
+    color,
+    xAxis,
+    yAxis,
     series: [
         {
             type: 'bar',

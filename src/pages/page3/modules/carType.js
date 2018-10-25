@@ -1,5 +1,6 @@
 import echarts from 'echarts'
 let page, chart
+const colors = ['#d4a731', '#246ae4', '#976cd3', '#3c42a4', '#25cc98']
 const defaults = {
     tooltip: {
         trigger: 'item',
@@ -8,14 +9,15 @@ const defaults = {
     legend: {
         type: 'scroll',
         orient: 'vertical',
-        right: 10,
-        top: 20,
-        bottom: 20,
+        right: 20,
+        y: 'center',
+        textStyle: {
+            color: '#b5c6c8'
+        },
         data: []
     },
     series: [
         {
-            name: '姓名',
             type: 'pie',
             radius: '55%',
             center: ['40%', '50%'],
@@ -38,11 +40,14 @@ const init = function () {
 const update = function (data) {
     const legendData = []
     const seriesData = []
-    data.forEach(row => {
-        legendData.push(row)
+    data.forEach(({name, num: value}, i) => {
+        legendData.push(name)
         seriesData.push({
-            name: row.name,
-            value: row.num
+            name,
+            value,
+            itemStyle: {
+                color: colors[i]
+            }
         })
     })
     const option = {

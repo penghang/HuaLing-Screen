@@ -1,27 +1,31 @@
 import echarts from 'echarts'
+import { eConfig, mixColors } from '../../config'
+const { grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
+const { type, axisTick, axisLabel, axisLine } = yAxis
 let page, chart
-
+const colorLength = mixColors.length
 const defaults = {
-    grid: {
-        left: 50,
-        right: 20,
-        top: 20,
-        bottom: 20
-    },
+    grid,
     legend: {
+        textStyle: {
+            color: '#c2d5d6'
+        },
         data: []
     },
-    xAxis: {
-        type: 'category',
-        data: []
-    },
+    xAxis,
     yAxis: [
         {
-            type: 'value',
+            ...yAxis,
             name: '频次 (次)'
         },
         {
-            type: 'value',
+            type,
+            axisTick,
+            axisLabel,
+            axisLine,
+            splitLine: {
+                show: false
+            },
             name: '百分比 (%)'
         }
     ],
@@ -35,18 +39,25 @@ const init = function () {
 const update = function ({ names, value }) {
     const xAxisData = []
     const series = []
-    value.forEach((row, i) => {
-        xAxisData.push(row.key)
+    value.forEach(({key, count, per}, i) => {
+        xAxisData.push(key)
         series.push({
             name: names[i],
             type: 'bar',
-            data: row.count
+            data: count,
+            barWidth: 5,
+            itemStyle: {
+                color: mixColors[i % colorLength]
+            }
         })
         series.push({
             name: names[i],
             type: 'line',
             yAxisIndex: 1,
-            data: row.per
+            data: per,
+            lineStyle: {
+                color: mixColors[i % colorLength]
+            }
         })
     })
     const option = {

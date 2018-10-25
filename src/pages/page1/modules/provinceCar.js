@@ -89,20 +89,20 @@ const initMapChart = function() {
             max: 100,
             range: [1, 100],
             inRange: {
-                color: ["#91bb47", "#db5c2d"]
+                color: ["#00c6de", "#ff4b00"]
             },
             outOfRange: {
-                color: ["#a4c962"]
+                color: ["#0191a4"]
             },
             textStyle: {
-                color: "#fff"
+                color: "#e4ecee"
             },
             itemWidth: 12,
-            itemHeight: 161,
+            itemHeight: 100,
             orient: "horizontal",
-            left: 50,
-            bottom: 50,
-            text: ['多', '少'],
+            left: 70,
+            bottom: 10,
+            text: ['高', '低'],
             calculable: false
         },
         series: [
@@ -118,54 +118,27 @@ const initMapChart = function() {
                     normal: {
                         show: true,
                         textStyle: {
-                            fontSize: 12,
+                            fontSize: 10,
                             color: '#fff'
                         }
                     },
                     emphasis: {
                         show: true,
                         textStyle: {
-                            fontSize: 12,
+                            fontSize: 10,
                             color: '#fff'
                         }
                     }
                 },
                 itemStyle: {
                     normal: {
-                        borderColor: '#0e232f'
+                        borderColor: '#024235'
                     },
                     emphasis: {
-                        borderColor: "#fff",
-                        borderWidth: 4,
+                        borderWidth: 1,
                         areaColor: "#2082d6"
                     }
                 },
-                // markPoint: {
-                //     silent: true,
-                //     data: [
-                //         {
-                //             name: "钓鱼岛",
-                //             coord: [123.67, 25.70],
-                //             symbolSize: 1,
-                //             symbol: "circle",
-                //             label: {
-                //                 normal: {
-                //                     formatter: '{b}',
-                //                     position: 'right',
-                //                     show: true,
-                //                     textStyle: {
-                //                         color: "#fff"
-                //                     }
-                //                 }
-                //             },
-                //             itemStyle: {
-                //                 normal: {
-                //                     color: '#1e5585'
-                //                 }
-                //             }
-                //         }
-                //     ]
-                // },
                 data: province
             }
         ]
@@ -175,7 +148,6 @@ const initMapChart = function() {
     mapChart.on('mapselectchanged', () => {
         pageTo(3)
     })
-    // myChart.on('mapunselected', mapChartSelectChange);
 }
 const updateHotChart = function(data) {
     const hotMapDatas = [];

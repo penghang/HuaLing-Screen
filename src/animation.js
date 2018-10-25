@@ -1,13 +1,15 @@
 const ACTIVE = 'active'
 /**
- * 动画方式
+ * 动画方式 slide/fade
  */
-const ANITATION_TYPE = 'slide'
+const ANITATION_TYPE = 'fade'
 const IN = 'in'
 const OUT = 'out'
 const PAGE_COUNT = 5
 let current = 0
 let playing = false
+
+const body = document.body
 
 /**
  * 滚屏动画
@@ -18,7 +20,6 @@ let playing = false
 const animate = function (from, to, isReverse) {
     if (from) {
         from.classList[isReverse ? 'remove' : 'add']('reverse');
-        from.style.display = 'block';
         from.classList.add(ANITATION_TYPE);
         from.classList.add(OUT);
         from.classList.remove(IN);
@@ -85,6 +86,11 @@ const pageTo = function (to) {
                 .then(() => {
                     playing = false
                 })
+            if (to > 1) {
+                body.className = 'not-first-page'
+            } else {
+                body.className = ''
+            }
         })
     }
 }
