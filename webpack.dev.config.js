@@ -62,13 +62,13 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
                             limit: 1024,
-                            name: 'assets/[name]-[hash:5].[ext]',
+                            name: 'assets/images/[name]-[hash:5].[ext]',
                             publicPath: '../'
                         }
                     },
@@ -77,6 +77,18 @@ module.exports = {
                         options: {
                             bypassOnDebug: true,
                             disable: true
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff2?)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: 'assets/fonts/[name]-[hash:5].[ext]',
+                            publicPath: '../'
                         }
                     }
                 ]

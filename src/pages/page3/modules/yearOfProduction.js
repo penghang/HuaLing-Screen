@@ -1,6 +1,6 @@
 import echarts from 'echarts'
 import { eConfig, lineColors } from '../../config'
-const { grid1: grid, xAxis, yAxis } = eConfig
+const { toolbox, grid1: grid, xAxis, yAxis } = eConfig
 let page, chart
 const months = 12
 const xData = []
@@ -8,6 +8,7 @@ for (let i = 1; i <= months; i++) {
     xData.push(`${i}月`)
 }
 const defaults = {
+    toolbox,
     grid,
     legend: {
         textStyle: {

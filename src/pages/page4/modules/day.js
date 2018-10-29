@@ -1,16 +1,20 @@
 import echarts from 'echarts'
 import { eConfig, barColors } from '../../config'
-const { grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
+const { toolbox, grid2: grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
 const { type, axisTick, axisLabel, axisLine } = yAxis
 const colorLength = barColors.length
 let page, chart
 const defaults = {
+    toolbox,
     grid,
     xAxis,
     yAxis: [
         {
             ...yAxis,
-            name: '里程 (公里)'
+            name: '里程 (公里)',
+            nameTextStyle: {
+                color: '#bccecf'
+            }
         },
         {
             type, 
@@ -20,7 +24,10 @@ const defaults = {
             splitLine: {
                 show: false
             },
-            name: '运行时长 (H)'
+            name: '运行时长 (H)',
+            nameTextStyle: {
+                color: '#bccecf'
+            }
         }
     ],
     series: [

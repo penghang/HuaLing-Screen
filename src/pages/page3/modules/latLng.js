@@ -1,7 +1,8 @@
 import echarts from 'echarts'
-import '@/lib/echarts4/province/beijing.js'
-
-let page, mapChart
+// import '@/lib/echarts4/province/beijing.js'
+import { eConfig, currentProvince } from '../../config'
+const { toolbox } = eConfig
+let page, mapChart, title, carnum
 const colors = ['#184ca9', '#305aa6']
 const provinceName = {
     '北京': 'beijing',
@@ -39,16 +40,18 @@ const provinceName = {
     '香港': 'xianggang',
     '澳门': 'aomen'
 };
-const initMapChart = function () {
-    var option = {
+// console.log(provinceName[getProvince()])
+const getConfig = function (map, data) {
+    return {
+        toolbox,
         tooltip: {
             trigger: 'item'
         },
         geo: {
-            top: 100,
-            left: 20,
-            right: 40,
-            map: '北京',
+            // top: 100,
+            // left: 20,
+            // right: 20,
+            map,
             label: {
                 emphasis: {
                     show: false
@@ -67,7 +70,7 @@ const initMapChart = function () {
         series: [{
             type: 'scatter',
             coordinateSystem: 'geo',
-            data: [],
+            data,
             symbolSize: 10,
             itemStyle: {
                 normal: {
@@ -75,30 +78,32 @@ const initMapChart = function () {
                 }
             }
         }]
-    };
-    mapChart = echarts.init(page.querySelector(".js-lat-lng-province-chart"))
-    mapChart.setOption(option, true);
+    }
 }
 
-const updateMapChart = function (data) {
+const init = function () {
+    page = document.getElementById('page3')
+    title = page.querySelector('.js-province-title')
+    carnum = page.querySelector('.js-carnum')
+}
+const getProvince = () => {
+    return currentProvince
+}
+const update = function (data) {
+    const province = getProvince()
+    title.innerHTML = `${province}散点图`
     let arr = []
     for (const key in data) {
         arr = arr.concat(data[key])
     }
-    mapChart.setOption({
-        series: [
-            {
-                data: arr
-            }
-        ]
+    import(`@/lib/echarts4/province/${provinceName[province]}.js`)
+    .then(() => {
+        const option = getConfig(province, arr)
+        if (!mapChart) {
+            mapChart = echarts.init(page.querySelector(".js-lat-lng-province-chart"))
+        }
+        mapChart.setOption(option, true)
     })
-}
-const init = function () {
-    page = document.getElementById('page3')
-    initMapChart()
-}
-const update = function (data) {
-    // updateMapChart(data)
 }
 console.log('load file modules/page3/modules/latLng.js')
 export default { init, update }

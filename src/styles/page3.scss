@@ -7,6 +7,15 @@
         .center {
             position: relative;
             width: 26%;
+            .chart-wrapper {
+                padding-top: 100px;
+                .chart-title {
+                    margin-top: -(100px-$chart-title-height*0.5);
+                }
+                .chart {
+                    margin-top: 80px;
+                }
+            }
         }
         .right {
             width: 37%;

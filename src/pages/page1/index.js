@@ -13,12 +13,15 @@ const init = function () {
     document.body.insertAdjacentHTML("beforeend", pageTpl)
 }
 init()
-CarNum.init()
-Agency.init()
-TimeActive.init()
-CarSeries.init()
-ProvinceCar.init()
-Mileage.init()
+const initModules = () => {
+    CarNum.init()
+    Agency.init()
+    TimeActive.init()
+    CarSeries.init()
+    ProvinceCar.init()
+    Mileage.init()
+}
+initModules()
 
 getCarNum().then(function(response) {
     CarNum.update(response.data)
@@ -40,5 +43,7 @@ getMileage().then(function(response) {
 })
 
 console.log('load file modules/page1/index.js')
-
-export default {}
+// const resize = () => {
+//     initModules()
+// }
+export { resize }

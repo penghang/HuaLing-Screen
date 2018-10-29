@@ -39,13 +39,15 @@ getProvinceCarType().then(function (response) {
 getProvinceEngineType().then(function (response) {
     EngineType.update(response.data)
 })
-getProvinceCarLatLng().then(function (response) {
-    LatLng.update(response.data)
-})
+
 getProvinceYearOfProduction().then(function (response) {
     YearOfProduction.update(response.data)
 })
 
 console.log('load file modules/page3/index.js')
-
-export default {}
+const active = function() {
+    getProvinceCarLatLng().then(function (response) {
+        LatLng.update(response.data)
+    })
+}
+export { active }

@@ -1,7 +1,10 @@
 import echarts from 'echarts'
+import { eConfig } from '../../config'
+const { toolbox } = eConfig
 let page, chart
 const colors = ['#d4a731', '#246ae4', '#976cd3', '#3c42a4', '#25cc98']
 const defaults = {
+    toolbox,
     tooltip: {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -9,7 +12,7 @@ const defaults = {
     legend: {
         type: 'scroll',
         orient: 'vertical',
-        right: 20,
+        right: "15%",
         y: 'center',
         textStyle: {
             color: '#b5c6c8'

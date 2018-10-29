@@ -1,8 +1,9 @@
 import echarts from 'echarts'
 import { eConfig } from '../../config'
-const { grid1: grid, xAxis1: xAxis, yAxis1: yAxis } = eConfig
+const { toolbox, grid1: grid, xAxis1: xAxis, yAxis1: yAxis } = eConfig
 let page, chart
 const defaults = {
+    toolbox,
     grid,
     xAxis,
     yAxis,

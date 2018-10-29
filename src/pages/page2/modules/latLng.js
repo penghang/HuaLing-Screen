@@ -1,10 +1,13 @@
 import echarts from 'echarts'
 import '@/lib/echarts4/china.correct.js'
+import { eConfig } from '../../config'
+const { toolbox } = eConfig
 
 let page, mapChart
 const colors = ['#184ca9', '#305aa6']
 const initMapChart = function () {
     var option = {
+        toolbox,
         tooltip: {
             trigger: 'item'
         },

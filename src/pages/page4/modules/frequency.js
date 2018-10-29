@@ -1,10 +1,11 @@
 import echarts from 'echarts'
 import { eConfig, mixColors } from '../../config'
-const { grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
-const { type, axisTick, axisLabel, axisLine } = yAxis
+const { toolbox, grid2: grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
+const { type, axisTick, axisLabel, axisLine, nameTextStyle } = yAxis
 let page, chart
 let colorLength = mixColors.length
 const defaults = {
+    toolbox,
     grid,
     legend: {
         textStyle: {
@@ -26,7 +27,8 @@ const defaults = {
             splitLine: {
                 show: false
             },
-            name: '百分比 (%)'
+            name: '百分比 (%)',
+            nameTextStyle
         }
     ],
     series: []
@@ -37,10 +39,10 @@ const init = function () {
     chart.setOption(defaults);
 }
 const update = function ({names, value}) {
-    const xAxisData = []
+    const xAxisData = names
     const series = []
     value.forEach(({ key, count, per}, i) => {
-        xAxisData.push(key)
+        // xAxisData.push(key)
         series.push({
             name: names[i],
             type: 'bar',

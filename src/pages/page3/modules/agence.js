@@ -1,8 +1,9 @@
 import echarts from 'echarts'
 import { eConfig, createLineargradientColor } from '../../config'
-const { grid1: grid, xAxis, yAxis } = eConfig
+const { toolbox, grid1: grid, xAxis, yAxis } = eConfig
 let page, chart
 const defaults = {
+    toolbox,
     grid,
     color: createLineargradientColor('#2067e4', '#6498e8'),
     xAxis,

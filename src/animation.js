@@ -44,8 +44,19 @@ const animate = function (from, to, isReverse) {
     //     }
     // }
 }
-
+const isPrevent = dom => {
+    if (dom == document.body) {
+        return false;
+    } else if (dom.classList.contains('e-prevent')) {
+        return true
+    } else {
+        return isPrevent(dom.parentNode)
+    }
+}
 const scrollFunc = function (event) {
+    if (isPrevent(event.target)) {
+        return
+    }
     event = event || window.event;
     event.delta = (event.wheelDelta) ? event.wheelDelta / 120 : -(event.detail || 0) / 3;
     if (event.delta < 0) {
@@ -80,7 +91,7 @@ const pageTo = function (to) {
     if (to >= 1 && to <= PAGE_COUNT && !playing) {
         const from = current
         current = to
-        import(`./pages/page${to}`).then(m => {
+        import(`./pages/page${to}`).then(page => {
             playing = true
             animate(getPage(from), getPage(to), to > from)
                 .then(() => {
@@ -90,6 +101,9 @@ const pageTo = function (to) {
                 body.className = 'not-first-page'
             } else {
                 body.className = ''
+            }
+            if (typeof page.active === 'function') {
+                page.active()
             }
         })
     }
