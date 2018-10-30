@@ -1,49 +1,89 @@
 import pageTpl from './index.html'
 
-import CarNum from './modules/carNum'
-import Agency from './modules/agency'
-import TimeActive from './modules/timeActive'
-import CarSeries from './modules/carSeries'
-import ProvinceCar from './modules/provinceCar'
-import Mileage from './modules/mileage'
-
-import { getCarNum, getAgency, getTimeActive, getCarSeries, getProvinceCar, getMileage } from '@/api'
+import {
+    CarNum,
+    Agency,
+    TimeActive,
+    CarSeries,
+    ProvinceCar,
+    Mileage
+} from './modules'
+import { 
+    getCarNum, 
+    getAgency, 
+    getTimeActive, 
+    getCarSeries, 
+    getProvinceCar, 
+    getMileage 
+} from '@/api'
+import { 
+    carNumStore, 
+    agencyStore, 
+    timeActiveStore, 
+    carSeriesStore, 
+    provinceCarStore, 
+    mileageStore 
+} from '@/store'
 
 const init = function () {
     document.body.insertAdjacentHTML("beforeend", pageTpl)
 }
 init()
+const modules = [
+    CarNum,
+    Agency,
+    TimeActive,
+    CarSeries,
+    ProvinceCar,
+    Mileage
+]
+const apis = [
+    getCarNum,
+    getAgency,
+    getTimeActive,
+    getCarSeries,
+    getProvinceCar,
+    getMileage 
+]
+const stores = [
+    carNumStore,
+    agencyStore,
+    timeActiveStore,
+    carSeriesStore,
+    provinceCarStore,
+    mileageStore
+]
 const initModules = () => {
-    CarNum.init()
-    Agency.init()
-    TimeActive.init()
-    CarSeries.init()
-    ProvinceCar.init()
-    Mileage.init()
+    modules.forEach(m => {
+        m.init()
+    })
 }
+
+const loadCache = () => {
+    stores.forEach((s, i) => {
+        s.get().then(data => {
+            data && modules[i].update(data)
+        })
+    })
+}
+
+const loadRemote = () => {
+    apis.forEach((api, i) => {
+        api().then(({ data }) => {
+            modules[i].update(data)
+            stores[i].set(data)
+        })
+    })
+}
+
 initModules()
+loadCache()
+loadRemote()
 
-getCarNum().then(function(response) {
-    CarNum.update(response.data)
-})
-getAgency().then(function(response) {
-    Agency.update(response.data)
-})
-getTimeActive().then(function(response) {
-    TimeActive.update(response.data)
-})
-getCarSeries().then(function(response) {
-    CarSeries.update(response.data)
-})
-getProvinceCar().then(function(response) {
-    ProvinceCar.update(response.data)
-})
-getMileage().then(function(response) {
-    Mileage.update(response.data)
-})
-
+const resize = () => {
+    modules.forEach(m => {
+        m.resize()
+    })
+}
 console.log('load file modules/page1/index.js')
-// const resize = () => {
-//     initModules()
-// }
 export { resize }

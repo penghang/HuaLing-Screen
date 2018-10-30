@@ -40,21 +40,30 @@ const initMapChart = function () {
                     color: colors[0]
                 }
             }
+        }, {
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            data: [],
+            symbolSize: 10,
+            itemStyle: {
+                normal: {
+                    color: colors[1]
+                }
+            }
         }]
     };
     mapChart = echarts.init(page.querySelector(".js-lat-lng-map-chart"))
     mapChart.setOption(option, true);
 }
 
-const updateMapChart = function (data) {
-    let arr = []
-    for (const key in data) {
-        arr = arr.concat(data[key])
-    }
+const updateMapChart = ({ online, offline }) => {
     mapChart.setOption({
         series: [
             {
-                data: arr
+                data: online
+            },
+            {
+                data: offline
             }
         ]
     })

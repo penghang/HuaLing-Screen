@@ -37,4 +37,4 @@ export function getEngineType() {
     })
 }
 
-console.log('load file api/page2.js')
+console.log('load file api/pages/page2.js')

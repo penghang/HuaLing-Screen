@@ -41,7 +41,7 @@ const provinceName = {
     '澳门': 'aomen'
 };
 // console.log(provinceName[getProvince()])
-const getConfig = function (map, data) {
+const getConfig = function (map, data1, data2) {
     return {
         toolbox,
         tooltip: {
@@ -70,11 +70,21 @@ const getConfig = function (map, data) {
         series: [{
             type: 'scatter',
             coordinateSystem: 'geo',
-            data,
+            data: data1,
             symbolSize: 10,
             itemStyle: {
                 normal: {
-                    color: 'purple'
+                    color: colors[0]
+                }
+            }
+        }, {
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            data: data2,
+            symbolSize: 10,
+            itemStyle: {
+                normal: {
+                    color: colors[1]
                 }
             }
         }]
@@ -89,16 +99,12 @@ const init = function () {
 const getProvince = () => {
     return currentProvince
 }
-const update = function (data) {
+const update = ({ online, offline }) => {
     const province = getProvince()
     title.innerHTML = `${province}散点图`
-    let arr = []
-    for (const key in data) {
-        arr = arr.concat(data[key])
-    }
     import(`@/lib/echarts4/province/${provinceName[province]}.js`)
     .then(() => {
-        const option = getConfig(province, arr)
+        const option = getConfig(province, online, offline)
         if (!mapChart) {
             mapChart = echarts.init(page.querySelector(".js-lat-lng-province-chart"))
         }

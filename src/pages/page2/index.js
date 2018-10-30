@@ -1,34 +1,77 @@
 import pageTpl from './index.html'
 
-import CarLatLng from './modules/latLng'
-import YearOfProduction from './modules/yearOfProduction'
-import CarSeriesAll from './modules/carSeries'
-import EngineType from './modules/engineType'
-
-import { getCarLatLng, getYearOfProduction, getCarSeriesAll, getEngineType } from '@/api'
+import {
+    CarLatLng,
+    YearOfProduction,
+    CarSeriesAll,
+    EngineType
+} from './modules'
+import { 
+    getCarLatLng, 
+    getYearOfProduction, 
+    getCarSeriesAll, 
+    getEngineType 
+} from '@/api'
+import { 
+    carLatLngStore, 
+    yearOfProductionStore, 
+    carSeriesAllStore, 
+    engineTypeStore 
+} from '@/store'
 
 const init = function () {
     document.body.insertAdjacentHTML("beforeend", pageTpl)
 }
 init()
-CarLatLng.init()
-YearOfProduction.init()
-CarSeriesAll.init()
-EngineType.init()
+const modules = [
+    CarLatLng,
+    YearOfProduction,
+    CarSeriesAll,
+    EngineType
+]
+const apis = [
+    getCarLatLng,
+    getYearOfProduction,
+    getCarSeriesAll,
+    getEngineType 
+]
+const stores = [
+    carLatLngStore,
+    yearOfProductionStore,
+    carSeriesAllStore,
+    engineTypeStore 
+]
+const initModules = () => {
+    modules.forEach(m => {
+        m.init()
+    })
+}
 
-getCarLatLng().then(function (response) {
-    CarLatLng.update(response.data)
-})
-getYearOfProduction().then(function (response) {
-    YearOfProduction.update(response.data)
-})
-getCarSeriesAll().then(function (response) {
-    CarSeriesAll.update(response.data)
-})
-getEngineType().then(function (response) {
-    EngineType.update(response.data)
-})
+const loadCache = () => {
+    stores.forEach((s, i) => {
+        s.get().then(data => {
+            data && modules[i].update(data)
+        })
+    })
+}
 
+const loadRemote = () => {
+    apis.forEach((api, i) => {
+        api().then(({ data }) => {
+            modules[i].update(data)
+            stores[i].set(data)
+        })
+    })
+}
+
+initModules()
+loadCache()
+loadRemote()
+
+const resize = () => {
+    modules.forEach(m => {
+        m.resize()
+    })
+}
 console.log('load file modules/page2/index.js')
-
-export default {}
+export { resize }

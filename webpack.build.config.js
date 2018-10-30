@@ -14,28 +14,12 @@ module.exports = {
         app: './src/app.js',
         vendor: ['echarts']
     },
-    devtool: 'cheap-source-map',
-    devServer: {
-        contentBase: resolve('dist'),
-        clientLogLevel: 'warning',
-        historyApiFallback: true,
-        hot: true,
-        compress: true,
-        host: 'localhost',
-        port: 9527,
-        open: true,
-        inline: true,
-        publicPath: './',
-        watchOptions: {
-            pool: true
-        }
-    },
     output: {
         // publicPath: __dirname + 'dist/',
         path: resolve('dist'),
         // filename: 'js/[name]-[chunkhash].bundle.js',
         filename: 'js/[name]-[hash:8].bundle.js',
-        chunkFilename: 'js/[name].[hash:8].chunk.js',
+        chunkFilename: 'js/[name]-[hash:8].chunk.js',
         publicPath: './'
     },
     resolve: {
@@ -100,7 +84,7 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'url-loader',
@@ -137,6 +121,18 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff2?)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: 'assets/fonts/[name]-[hash:5].[ext]',
+                            publicPath: '../'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -161,34 +157,34 @@ module.exports = {
             filename: 'css/[name].[hash:8].bundle.css'
         })
     ],
-    optimization: {
-        //打包 第三方库
-        //打包 公共文件
-        splitChunks: {
-            cacheGroups: {
-                vendor: {//node_modules内的依赖库
-                    chunks: "all",
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
-                    maxInitialRequests: 5,
-                    minSize: 0,
-                    priority: 100,
-                    // enforce: true?
-                },
-                common: {// ‘src/js’ 下的js文件
-                    chunks: "all",
-                    test: /[\\/]src[\\/]js[\\/]/,//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,  
-                    name: "common", //生成文件名，依据output规则
-                    minChunks: 2,
-                    maxInitialRequests: 5,
-                    minSize: 0,
-                    priority: 1
-                }
-            }
-        },
-        runtimeChunk: {
-            name: 'manifest'
-        }
-    }
+    // optimization: {
+    //     //打包 第三方库
+    //     //打包 公共文件
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {//node_modules内的依赖库
+    //                 chunks: "all",
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: "vendor",
+    //                 minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
+    //                 maxInitialRequests: 5,
+    //                 minSize: 0,
+    //                 priority: 100,
+    //                 // enforce: true?
+    //             },
+    //             common: {// ‘src/js’ 下的js文件
+    //                 chunks: "all",
+    //                 test: /[\\/]src[\\/]js[\\/]/,//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,  
+    //                 name: "common", //生成文件名，依据output规则
+    //                 minChunks: 2,
+    //                 maxInitialRequests: 5,
+    //                 minSize: 0,
+    //                 priority: 1
+    //             }
+    //         }
+    //     },
+    //     runtimeChunk: {
+    //         name: 'manifest'
+    //     }
+    // }
 }

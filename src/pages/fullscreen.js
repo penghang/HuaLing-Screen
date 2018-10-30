@@ -1,6 +1,6 @@
 import echarts from 'echarts'
-const IN = 'chart-fullscreen fade in'
-const OUT = 'chart-fullscreen fade out'
+const IN = 'chart-fullscreen e-prevent fade in'
+const OUT = 'chart-fullscreen e-prevent fade out'
 let rendered = false
 let dom
 let chart

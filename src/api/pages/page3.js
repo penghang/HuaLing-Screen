@@ -60,4 +60,4 @@ export function getProvinceCarType(province) {
     })
 }
 
-console.log('load file api/page3.js')
+console.log('load file api/pages/page3.js')

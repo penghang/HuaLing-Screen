@@ -18,4 +18,4 @@ export function getDrivingTimeFrequency() {
     })
 }
 
-console.log('load file api/page5.js')
+console.log('load file api/pages/page5.js')

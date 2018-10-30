@@ -91,7 +91,7 @@ const pageTo = function (to) {
     if (to >= 1 && to <= PAGE_COUNT && !playing) {
         const from = current
         current = to
-        import(`./pages/page${to}`).then(page => {
+        import(/* webpackChunkName: "page", webpackMode: "lazy" */`./pages/page${to}`).then(page => {
             playing = true
             animate(getPage(from), getPage(to), to > from)
                 .then(() => {

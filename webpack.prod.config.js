@@ -11,8 +11,7 @@ function resolve(dir) {
 module.exports = {
     mode: 'production',
     entry: {
-        app: './src/app.js',
-        vendor: ['echarts']
+        app: './src/app.js'
     },
     output: {
         path: resolve('dist'),
@@ -64,12 +63,12 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 1024,
+                            limit: 20000,
                             name: 'assets/[name]-[hash:5].[ext]',
                             publicPath: '../'
                         }
@@ -101,6 +100,19 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff2?)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1024,
+                            name: 'assets/fonts/[name]-[hash:5].[ext]',
+                            publicPath: '../'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -123,36 +135,5 @@ module.exports = {
         new extractTextWebpackPlugin({
             filename: 'css/[name].[hash:8].bundle.css'
         })
-    ],
-    optimization: {
-        minimize: true,
-        //打包 第三方库
-        //打包 公共文件
-        splitChunks: {
-            cacheGroups: {
-                vendor: {//node_modules内的依赖库
-                    chunks: "all",
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
-                    maxInitialRequests: 5,
-                    minSize: 0,
-                    priority: 100,
-                    // enforce: true?
-                },
-                common: {// ‘src/js’ 下的js文件
-                    chunks: "all",
-                    test: /[\\/]src[\\/]js[\\/]/,//也可以值文件/[\\/]src[\\/]js[\\/].*\.js/,  
-                    name: "common", //生成文件名，依据output规则
-                    minChunks: 2,
-                    maxInitialRequests: 5,
-                    minSize: 0,
-                    priority: 1
-                }
-            }
-        },
-        runtimeChunk: {
-            name: 'manifest'
-        }
-    }
+    ]
 }

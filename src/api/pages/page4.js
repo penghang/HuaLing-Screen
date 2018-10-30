@@ -18,4 +18,4 @@ export function getMileageFrequency() {
     })
 }
 
-console.log('load file api/page4.js')
+console.log('load file api/pages/page4.js')

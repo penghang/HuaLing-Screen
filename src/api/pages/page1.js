@@ -55,4 +55,4 @@ export function getMileage() {
     })
 }
 
-console.log('load file api/page1.js')
+console.log('load file api/pages/page1.js')

@@ -1,12 +1,15 @@
 import pageTpl from './index.html'
 
-import Agency from './modules/agence'
-import CarSeries from './modules/carSeries'
-import CarType from './modules/carType'
-import EngineType from './modules/engineType'
-import LatLng from './modules/latLng'
-import YearOfProduction from './modules/yearOfProduction'
+import { currentProvince } from '../config'
 
+import {
+    Agency,
+    CarSeries,
+    CarType,
+    EngineType,
+    LatLng,
+    YearOfProduction
+} from './modules'
 import { 
     getProvinceAgency, 
     getProvinceCarSeriesAll, 
@@ -15,39 +18,81 @@ import {
     getProvinceCarLatLng,
     getProvinceYearOfProduction
 } from '@/api'
-
+import {
+    provinceAgencyStore,
+    provinceCarLatLngStore,
+    provinceYearOfProductionStore,
+    provinceCarSeriesAllStore,
+    provinceEngineTypeStore,
+    provinceCarTypeStore
+} from '@/store'
+let lastProvince = currentProvince
 const init = function () {
     document.body.insertAdjacentHTML("beforeend", pageTpl)
 }
 init()
-Agency.init()
-CarSeries.init()
-CarType.init()
-EngineType.init()
-LatLng.init()
-YearOfProduction.init()
-
-getProvinceAgency().then(function (response) {
-    Agency.update(response.data)
-})
-getProvinceCarSeriesAll().then(function (response) {
-    CarSeries.update(response.data)
-})
-getProvinceCarType().then(function (response) {
-    CarType.update(response.data)
-})
-getProvinceEngineType().then(function (response) {
-    EngineType.update(response.data)
-})
-
-getProvinceYearOfProduction().then(function (response) {
-    YearOfProduction.update(response.data)
-})
-
-console.log('load file modules/page3/index.js')
-const active = function() {
-    getProvinceCarLatLng().then(function (response) {
-        LatLng.update(response.data)
+const modules = [
+    Agency,
+    CarSeries,
+    CarType,
+    EngineType,
+    LatLng,
+    YearOfProduction
+]
+const apis = [
+    getProvinceAgency,
+    getProvinceCarSeriesAll,
+    getProvinceCarType,
+    getProvinceEngineType,
+    getProvinceCarLatLng,
+    getProvinceYearOfProduction
+]
+const stores = [
+    provinceAgencyStore,
+    provinceCarLatLngStore,
+    provinceYearOfProductionStore,
+    provinceCarSeriesAllStore,
+    provinceEngineTypeStore,
+    provinceCarTypeStore
+]
+const initModules = () => {
+    modules.forEach(m => {
+        m.init()
     })
 }
-export { active }
+
+const loadCache = () => {
+    stores.forEach((s, i) => {
+        s.get(currentProvince).then(data => {
+            data && modules[i].update(data)
+        })
+    })
+}
+
+const loadRemote = () => {
+    // console.log(lastProvince, currentProvince)
+    apis.forEach((api, i) => {
+        api().then(({ data }) => {
+            modules[i].update(data)
+            stores[i].set(currentProvince, data)
+        })
+    })
+}
+
+initModules()
+loadCache()
+loadRemote()
+
+const resize = () => {
+    modules.forEach(m => {
+        m.resize()
+    })
+}
+const active = () => {
+    if (lastProvince !== currentProvince) {
+        lastProvince = currentProvince
+        loadRemote()
+    }
+}
+console.log('load file modules/page3/index.js')
+export { resize, active }
