@@ -21,7 +21,7 @@ const defaults = {
 }
 const init = function () {
     page = document.getElementById('page2')
-    chart = echarts.init(page.querySelector('.js-car-series-all-chart'))
+    chart = echarts.init(page.querySelector('.js-car-type-chart'))
     chart.setOption(defaults);
 }
 const update = function (data) {
@@ -46,5 +46,5 @@ const update = function (data) {
     }
     chart.setOption(option)
 }
-console.log('load file modules/page2/modules/carSeries.js')
+console.log('load file modules/page2/modules/carTypeAll.js')
 export default { init, update }

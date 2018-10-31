@@ -3,19 +3,19 @@ import pageTpl from './index.html'
 import {
     CarLatLng,
     YearOfProduction,
-    CarSeriesAll,
+    CarType,
     EngineType
 } from './modules'
 import { 
     getCarLatLng, 
     getYearOfProduction, 
-    getCarSeriesAll, 
+    getCarType, 
     getEngineType 
 } from '@/api'
 import { 
     carLatLngStore, 
     yearOfProductionStore, 
-    carSeriesAllStore, 
+    carTypeStore, 
     engineTypeStore 
 } from '@/store'
 
@@ -26,19 +26,19 @@ init()
 const modules = [
     CarLatLng,
     YearOfProduction,
-    CarSeriesAll,
+    CarType,
     EngineType
 ]
 const apis = [
     getCarLatLng,
     getYearOfProduction,
-    getCarSeriesAll,
+    getCarType,
     getEngineType 
 ]
 const stores = [
     carLatLngStore,
     yearOfProductionStore,
-    carSeriesAllStore,
+    carTypeStore,
     engineTypeStore 
 ]
 const initModules = () => {

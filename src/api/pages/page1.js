@@ -5,7 +5,7 @@ import request from '@/utils/request'
  */
 export function getCarNum() {
     return request({
-        url: 'getCarNum',
+        url: 'CarData/GetCarNum',
         method: 'get'
     })
 }
@@ -14,7 +14,7 @@ export function getCarNum() {
  */
 export function getTimeActive() {
     return request({
-        url: 'getTimeActive',
+        url: 'CarData/GetTimeActive',
         method: 'get'
     })
 }
@@ -23,7 +23,7 @@ export function getTimeActive() {
  */
 export function getAgency() {
     return request({
-        url: 'getAgency',
+        url: 'CarData/GetAgency',
         method: 'get'
     })
 }
@@ -32,7 +32,7 @@ export function getAgency() {
  */
 export function getCarSeries() {
     return request({
-        url: 'getCarSeries',
+        url: 'CarData/GetCarSeries',
         method: 'get'
     })
 }
@@ -41,7 +41,7 @@ export function getCarSeries() {
  */
 export function getProvinceCar() {
     return request({
-        url: 'getProvinceCar',
+        url: 'CarData/GetProvinceCar',
         method: 'get'
     })
 }
@@ -50,7 +50,7 @@ export function getProvinceCar() {
  */
 export function getMileage() {
     return request({
-        url: 'getMileage',
+        url: 'CarData/GetMileage',
         method: 'get'
     })
 }

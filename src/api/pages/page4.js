@@ -4,7 +4,7 @@ import request from '@/utils/request'
  */
 export function getDayAvgMileageAndTime() {
     return request({
-        url: 'getDayAvgMileageAndTime',
+        url: 'CarData/GetDayAvgMileageAndTime',
         method: 'get'
     })
 }
@@ -13,7 +13,7 @@ export function getDayAvgMileageAndTime() {
  */
 export function getMileageFrequency() {
     return request({
-        url: 'getMileageFrequency',
+        url: 'CarData/GetMileageFrequency',
         method: 'get'
     })
 }

@@ -36,13 +36,6 @@ const animate = function (from, to, isReverse) {
             resolve()
         }, 1000)
     })
-    // document.title = curpage.getAttribute("data-title");
-    // var moduleName;
-    // if (moduleName = curpage.getAttribute("data-module")) {
-    //     if (!require.defined(moduleName)) {
-    //         require([moduleName]);
-    //     }
-    // }
 }
 const isPrevent = dom => {
     if (dom == document.body) {

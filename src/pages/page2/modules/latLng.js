@@ -8,9 +8,6 @@ const colors = ['#184ca9', '#305aa6']
 const initMapChart = function () {
     var option = {
         toolbox,
-        tooltip: {
-            trigger: 'item'
-        },
         geo: {
             top: 0,
             bottom: 0,
@@ -34,22 +31,26 @@ const initMapChart = function () {
             type: 'scatter',
             coordinateSystem: 'geo',
             data: [],
-            symbolSize: 10,
+            symbolSize: 5,
             itemStyle: {
                 normal: {
                     color: colors[0]
                 }
-            }
+            },
+            large: true,
+            silent: true
         }, {
             type: 'scatter',
             coordinateSystem: 'geo',
             data: [],
-            symbolSize: 10,
+            symbolSize: 5,
             itemStyle: {
                 normal: {
                     color: colors[1]
                 }
-            }
+            },
+            large: true,
+            silent: true
         }]
     };
     mapChart = echarts.init(page.querySelector(".js-lat-lng-map-chart"))

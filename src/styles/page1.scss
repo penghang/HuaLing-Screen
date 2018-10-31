@@ -81,23 +81,23 @@
         font-weight: bold;
         font-size: 1.6rem;
         background: linear-gradient(to bottom, #00ffe7, #09e7ff);
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         color: #00ffe7;
     }
     .card-color1 .card-num {
         background: linear-gradient(to bottom, #00ffe7, #09e7ff);
-        -webkit-background-clip: text;
+        background-clip: text;
         color: #00ffe7;
     }
     .card-color2 .card-num {
         background: linear-gradient(to bottom, #2af8ff, #53c4ff);
-        -webkit-background-clip: text;
+        background-clip: text;
         color: #2af8ff;
     }
     .card-color3 .card-num {
         background: linear-gradient(to bottom, #04ff6f, #00ddaa);
-        -webkit-background-clip: text;
+        background-clip: text;
         color: #04ff6f;
     }
     /*地图*/
@@ -157,7 +157,7 @@
     }
     .card-circle-wrapper .card-num {
         background: linear-gradient(to bottom, #72ffbe, #3decfe);
-        -webkit-background-clip: text;
+        background-clip: text;
         color: #72ffbe;
         font-size: 2.5rem;
     }

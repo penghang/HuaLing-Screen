@@ -1,20 +1,37 @@
 import echarts from 'echarts'
-import { eConfig, barColors } from '../../config'
-const { toolbox, grid1: grid, xAxis, yAxis } = eConfig
+import { eConfig } from '../../config'
+const { toolbox } = eConfig
 let page, chart
-const colorLength = barColors.length
+const colors = ['#d4a731', '#246ae4', '#976cd3', '#3c42a4', '#25cc98']
 const defaults = {
     toolbox,
-    grid,
-    xAxis,
-    yAxis,
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}辆 ({d}%)"
+    },
+    legend: {
+        type: 'scroll',
+        orient: 'vertical',
+        right: "15%",
+        y: 'center',
+        textStyle: {
+            color: '#b5c6c8'
+        },
+        data: []
+    },
     series: [
         {
-            type: 'bar',
-            barWidth: '60%',
+            name: '车系',
+            type: 'pie',
+            radius: '55%',
+            center: ['40%', '50%'],
             data: [],
             itemStyle: {
-                barBorderRadius: [3, 3, 0, 0]
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
             }
         }
     ]
@@ -25,23 +42,24 @@ const init = function () {
     chart.setOption(defaults);
 }
 const update = function (data) {
-    const x = [], y = []
-    let i = 0
-    data.forEach(({ name, num }) => {
-        x.push(name)
-        y.push({
-            value: num,
+    const legendData = []
+    const seriesData = []
+    data.forEach(({ name, num: value }, i) => {
+        legendData.push(name)
+        seriesData.push({
+            name,
+            value,
             itemStyle: {
-                color: barColors[(i++) % colorLength]
+                color: colors[i]
             }
         })
     })
     const option = {
-        xAxis: {
-            data: x
+        legend: {
+            data: legendData
         },
         series: [{
-            data: y
+            data: seriesData
         }]
     }
     chart.setOption(option)

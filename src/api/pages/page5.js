@@ -4,7 +4,7 @@ import request from '@/utils/request'
  */
 export function getCarTypeMonthMileage() {
     return request({
-        url: 'getCarTypeMonthMileage',
+        url: 'CarData/GetCarTypeMonthMileage',
         method: 'get'
     })
 }
@@ -13,7 +13,7 @@ export function getCarTypeMonthMileage() {
  */
 export function getDrivingTimeFrequency() {
     return request({
-        url: 'getDrivingTimeFrequency',
+        url: 'CarData/GetDrivingTimeFrequency',
         method: 'get'
     })
 }

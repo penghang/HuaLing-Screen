@@ -11,8 +11,7 @@ function resolve(dir) {
 module.exports = {
     mode: 'development',
     entry: {
-        app: './src/app.js',
-        vendor: ['echarts']
+        app: './src/app.js'
     },
     output: {
         // publicPath: __dirname + 'dist/',
@@ -89,8 +88,8 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 1024,
-                            name: 'assets/[name]-[hash:5].[ext]',
+                            limit: 20000,
+                            name: 'assets/images/[name]-[hash:5].[ext]',
                             publicPath: '../'
                         }
                     },
@@ -128,6 +127,7 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
+                            limit: 1024,
                             name: 'assets/fonts/[name]-[hash:5].[ext]',
                             publicPath: '../'
                         }
@@ -147,7 +147,7 @@ module.exports = {
             // filename: 'index-[hash].html',
             template: 'index.html',
             // inject: 'head',
-            title: '哈哈好的',
+            // title: '大屏',
             minify: {
                 removeComments: true, // 删除注释
                 collapseWhitespace: true, // 删除空格

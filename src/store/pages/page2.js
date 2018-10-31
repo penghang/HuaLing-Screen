@@ -5,7 +5,7 @@ const store = lf.createInstance({ name: 'guest' })
 const keys = {
     carLatLng: 'p2-car-lat-lng',
     yearOfProduction: 'p2-year-of-production',
-    carSeriesAll: 'p2-car-series-all',
+    carType: 'p2-car-type',
     engineType: 'p2-engine-type'
 }
 /**
@@ -33,12 +33,12 @@ const yearOfProductionStore = {
 /**
  * 全部车系
  */
-const carSeriesAllStore = {
+const carTypeStore = {
     get() {
-        return store.getItem(keys.carSeriesAll)
+        return store.getItem(keys.carType)
     },
     set(value) {
-        return store.setItem(keys.carSeriesAll, value)
+        return store.setItem(keys.carType, value)
     }
 }
 /**
@@ -58,6 +58,6 @@ console.log('load file store/pages/page2.js')
 export {
     carLatLngStore,
     yearOfProductionStore,
-    carSeriesAllStore,
+    carTypeStore,
     engineTypeStore
 }

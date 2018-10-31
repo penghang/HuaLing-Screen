@@ -6,7 +6,7 @@ const keys = {
     provinceAgency: 'p3-province-agency',
     provinceCarLatLng: 'p3-province-car-lat-lng',
     provinceYearOfProduction: 'p3-province-year-of-production',
-    provinceCarSeriesAll: 'p3-province-car-series-all',
+    provinceCarSeries: 'p3-province-car-series',
     provinceEngineType: 'p3-province-engine-type',
     provinceCarType: 'p3-province-car-type'
 }
@@ -46,12 +46,12 @@ const provinceYearOfProductionStore = {
 /**
  * 省车系
  */
-const provinceCarSeriesAllStore = {
+const provinceCarSeriesStore = {
     get(name) {
-        return store.getItem(`${keys.provinceCarSeriesAll}-${name}`)
+        return store.getItem(`${keys.provinceCarSeries}-${name}`)
     },
     set(name, value) {
-        return store.setItem(`${keys.provinceCarSeriesAll}-${name}`, value)
+        return store.setItem(`${keys.provinceCarSeries}-${name}`, value)
     }
 }
 /**
@@ -81,9 +81,9 @@ console.log('load file store/pages/page3.js')
 
 export {
     provinceAgencyStore,
-    provinceCarLatLngStore,
-    provinceYearOfProductionStore,
-    provinceCarSeriesAllStore,
+    provinceCarSeriesStore,
+    provinceCarTypeStore,
     provinceEngineTypeStore,
-    provinceCarTypeStore
+    provinceCarLatLngStore,
+    provinceYearOfProductionStore
 }

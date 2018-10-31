@@ -11,7 +11,7 @@ const defaults = {
     series: [
         {
             type: 'bar',
-            barWidth: 50,
+            barWidth: '50%',
             data: [],
             itemStyle: {
                 barBorderRadius: [3, 3, 0, 0]

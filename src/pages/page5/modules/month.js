@@ -23,7 +23,7 @@ const defaults = {
     yAxis: [
         {
             ...yAxis,
-            name: '里程 (公里)'
+            name: '里程 (万公里)'
         }
     ],
     series: []
@@ -43,7 +43,7 @@ const update = function (data) {
             name: key,
             type: 'line',
             color: lineColors[i++],
-            data: data[key]
+            data: data[key].map(v => v/10000)
         })
     }
     const option = {

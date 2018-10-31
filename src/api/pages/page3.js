@@ -5,8 +5,11 @@ import request from '@/utils/request'
  */
 export function getProvinceAgency(province) {
     return request({
-        url: 'province/getAgency',
-        method: 'get'
+        url: 'CarProvince/GetAgency',
+        method: 'get',
+        params: {
+            PROVINCENAME: province
+        }
     })
 }
 /**
@@ -15,8 +18,11 @@ export function getProvinceAgency(province) {
  */
 export function getProvinceCarLatLng(province) {
     return request({
-        url: 'province/getCarLatLng',
-        method: 'get'
+        url: 'CarProvince/GetCarLatLng',
+        method: 'get',
+        params: {
+            PROVINCENAME: province
+        }
     })
 }
 /**
@@ -25,18 +31,24 @@ export function getProvinceCarLatLng(province) {
  */
 export function getProvinceYearOfProduction(province) {
     return request({
-        url: 'province/getYearOfProduction',
-        method: 'get'
+        url: 'CarProvince/GetYearOfProduction',
+        method: 'get',
+        params: {
+            PROVINCENAME: province
+        }
     })
 }
 /**
  * 车系
  * @param {string} province - 省份
  */
-export function getProvinceCarSeriesAll(province) {
+export function getProvinceCarSeries(province) {
     return request({
-        url: 'province/getCarSeriesAll',
-        method: 'get'
+        url: 'CarProvince/GetCarSeries',
+        method: 'get',
+        params: {
+            PROVINCENAME: province
+        }
     })
 }
 /**
@@ -45,8 +57,11 @@ export function getProvinceCarSeriesAll(province) {
  */
 export function getProvinceEngineType(province) {
     return request({
-        url: 'province/getEngineType',
-        method: 'get'
+        url: 'CarProvince/GetEngineType',
+        method: 'get',
+        params: {
+            PROVINCENAME: province
+        }
     })
 }
 /**
@@ -55,8 +70,11 @@ export function getProvinceEngineType(province) {
  */
 export function getProvinceCarType(province) {
     return request({
-        url: 'province/getCarType',
-        method: 'get'
+        url: 'CarProvince/GetCarType',
+        method: 'get',
+        params: {
+            PROVINCENAME: province
+        }
     })
 }
 

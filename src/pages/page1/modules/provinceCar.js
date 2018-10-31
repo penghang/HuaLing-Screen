@@ -49,7 +49,7 @@ const initHotChart = function() {
             show: false,
             min: 0,
             max: 15000,
-            splitNumber: 5,
+            splitNumber: 10,
             inRange: {
                 color: ['#d94e5d','#eac736','#50a3ba'].reverse()
             }
@@ -78,9 +78,9 @@ const initHotChart = function() {
             blurSize: 20,
             data:[]
         }]
-    };
-    hotChart = echarts.init(page.querySelector('.js-hot-chart'));
-    hotChart.setOption(option);
+    }
+    hotChart = echarts.init(page.querySelector('.js-hot-chart'))
+    hotChart.setOption(option)
 }
 const initMapChart = function() {
     var option = {
@@ -146,9 +146,9 @@ const initMapChart = function() {
                 data: province
             }
         ]
-    };
+    }
     mapChart = echarts.init(page.querySelector(".js-map-chart"))
-    mapChart.setOption(option, true);
+    mapChart.setOption(option, true)
     mapChart.on('mapselectchanged', (opt) => {
         const { name } = opt.batch[0]
         setProvince(name)
@@ -156,37 +156,36 @@ const initMapChart = function() {
     })
 }
 const updateHotChart = function(data) {
-    const hotMapDatas = [];
+    const hotMapDatas = []
+    let max = 0
     data.forEach(function (p) {
         if (provinceLatLngs[p.name.replace('省', '')]) {
-            hotMapDatas.push(provinceLatLngs[p.name.replace('省', '')].concat(p.total));
+            hotMapDatas.push(provinceLatLngs[p.name.replace('省', '')].concat(p.total))
+            max = Math.max(p.total, max)
         }
-    });
+    })
+    max = max / 2
     const option = {
+        visualMap: {
+            max
+        },
         series: [{
             data: hotMapDatas
         }]
-    };
-    hotChart.setOption(option);
+    }
+    hotChart.setOption(option)
 }
 const updateMapChart = function(data) {
-    let max = 0;
+    let max = 0
     data.forEach(pc => {
         const f = province.filter(p => {
-            return pc.name == p.name;
-        })[0];
+            return pc.name == p.name
+        })[0]
         if (f) {
-            f.value = pc.total;
-            max = pc.total > max ? pc.total : max;
+            f.value = pc.total
+            max = pc.total > max ? pc.total : max
         }
-    });
-    // province.forEach(function (p) {
-    //     if (p.name === selecteProvince) {
-    //         p.selected = true;
-    //     } else if (p.selected) {
-    //         delete p.selected;
-    //     }
-    // });
+    })
     mapChart.setOption({
         visualMap: {
             max: max,
@@ -200,34 +199,34 @@ const updateMapChart = function(data) {
     })
 }
 const updateProvinceList = function(data) {
-    const chart = page.querySelector('.js-province-list');
-    const frag = document.createDocumentFragment();
-    data.forEach(row => {
-        const li = document.createElement('li');
-        li.className = 'process-row';
-        const name = document.createElement('span');
-        name.className = 'process-row-name';
+    const chart = page.querySelector('.js-province-list')
+    const frag = document.createDocumentFragment()
+    data.sort((r1, r2) => r2.total - r1.total).forEach(row => {
+        const li = document.createElement('li')
+        li.className = 'process-row'
+        const name = document.createElement('span')
+        name.className = 'process-row-name'
         name.appendChild(document.createTextNode(row.name))
-        li.appendChild(name);
-        const processWrapper = document.createElement('span');
-        processWrapper.className = 'process-wrapper';
-        const process = document.createElement('span');
-        process.className = 'process';
-        process.style.width = (row.online / row.total * 100) + '%';
-        processWrapper.appendChild(process);
-        li.appendChild(processWrapper);
-        const value = document.createElement('span');
-        value.className = 'process-row-value';
-        const highlight = document.createElement('span');
-        highlight.className = 'hightlight-text';
-        highlight.appendChild(document.createTextNode(row.online));
-        value.appendChild(highlight);
-        value.appendChild(document.createTextNode('/' + row.total));
-        li.appendChild(value);
-        frag.appendChild(li);
-    });
+        li.appendChild(name)
+        const processWrapper = document.createElement('span')
+        processWrapper.className = 'process-wrapper'
+        const process = document.createElement('span')
+        process.className = 'process'
+        process.style.width = (row.online / row.total * 100) + '%'
+        processWrapper.appendChild(process)
+        li.appendChild(processWrapper)
+        const value = document.createElement('span')
+        value.className = 'process-row-value'
+        const highlight = document.createElement('span')
+        highlight.className = 'hightlight-text'
+        highlight.appendChild(document.createTextNode(row.online))
+        value.appendChild(highlight)
+        value.appendChild(document.createTextNode('/' + row.total))
+        li.appendChild(value)
+        frag.appendChild(li)
+    })
     chart.innerHTML = ''
-    chart.appendChild(frag);
+    chart.appendChild(frag)
 }
 const init = () => {
     page = document.getElementById('page1')

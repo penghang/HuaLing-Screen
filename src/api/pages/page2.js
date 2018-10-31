@@ -5,7 +5,7 @@ import request from '@/utils/request'
  */
 export function getCarLatLng() {
     return request({
-        url: 'getCarLatLng',
+        url: 'CarData/GetCarLatLng',
         method: 'get'
     })
 }
@@ -14,16 +14,16 @@ export function getCarLatLng() {
  */
 export function getYearOfProduction() {
     return request({
-        url: 'getYearOfProduction',
+        url: 'CarData/GetYearOfProduction',
         method: 'get'
     })
 }
 /**
- * 全部车系
+ * 全部车型
  */
-export function getCarSeriesAll() {
+export function getCarType() {
     return request({
-        url: 'getCarSeriesAll',
+        url: 'CarData/GetCarType',
         method: 'get'
     })
 }
@@ -32,7 +32,7 @@ export function getCarSeriesAll() {
  */
 export function getEngineType() {
     return request({
-        url: 'getEngineType',
+        url: 'CarData/GetEngineType',
         method: 'get'
     })
 }

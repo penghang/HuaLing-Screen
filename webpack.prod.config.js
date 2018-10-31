@@ -69,7 +69,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 20000,
-                            name: 'assets/[name]-[hash:5].[ext]',
+                            name: 'assets/images/[name]-[hash:5].[ext]',
                             publicPath: '../'
                         }
                     },
@@ -126,7 +126,7 @@ module.exports = {
             // filename: 'index-[hash].html',
             template: 'index.html',
             // inject: 'head',
-            title: '大屏',
+            // title: '大屏',
             minify: {
                 removeComments: true, // 删除注释
                 collapseWhitespace: true, // 删除空格

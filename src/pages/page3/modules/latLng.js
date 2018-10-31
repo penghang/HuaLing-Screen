@@ -71,22 +71,26 @@ const getConfig = function (map, data1, data2) {
             type: 'scatter',
             coordinateSystem: 'geo',
             data: data1,
-            symbolSize: 10,
+            symbolSize: 5,
             itemStyle: {
                 normal: {
                     color: colors[0]
                 }
-            }
+            },
+            large: true,
+            silent: true
         }, {
             type: 'scatter',
             coordinateSystem: 'geo',
             data: data2,
-            symbolSize: 10,
+            symbolSize: 5,
             itemStyle: {
                 normal: {
                     color: colors[1]
                 }
-            }
+            },
+            large: true,
+            silent: true
         }]
     }
 }
@@ -102,7 +106,7 @@ const getProvince = () => {
 const update = ({ online, offline }) => {
     const province = getProvince()
     title.innerHTML = `${province}散点图`
-    import(`@/lib/echarts4/province/${provinceName[province]}.js`)
+    import(/* webpackChunkName: "province", webpackMode: "lazy" */`@/lib/echarts4/province/${provinceName[province]}.js`)
     .then(() => {
         const option = getConfig(province, online, offline)
         if (!mapChart) {
@@ -110,6 +114,7 @@ const update = ({ online, offline }) => {
         }
         mapChart.setOption(option, true)
     })
+    carnum.innerHTML = online.length + offline.length
 }
 console.log('load file modules/page3/modules/latLng.js')
 export default { init, update }

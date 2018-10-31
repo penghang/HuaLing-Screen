@@ -8,7 +8,9 @@ function resolve(dir) {
 
 module.exports = {
     mode: 'development',
-    entry: './src/app.js',
+    entry: {
+        app: './src/app.js'
+    },
     devtool: 'cheap-source-map',
     devServer: {
         // contentBase: resolve('dist'),
@@ -24,6 +26,12 @@ module.exports = {
         // publicPath: './',
         watchOptions: {
             pool: true
+        },
+        proxy: {
+            // 代理到YApi的Mock地址
+            // '/': 'http://127.0.0.1:3000/mock/11'
+            // 代理到联调地址
+            '/': 'http://106.74.36.17:81/FullScreen'
         }
     },
     // output: {
@@ -87,6 +95,7 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
+                            limit: 1024,
                             name: 'assets/fonts/[name]-[hash:5].[ext]',
                             publicPath: '../'
                         }
@@ -104,7 +113,7 @@ module.exports = {
             // filename: 'index-[hash].html',
             template: 'index.html',
             // inject: 'head',
-            title: '哈哈好的',
+            // title: '大屏',
             // minify: {
             //     removeComments: true, // 删除注释
             //     collapseWhitespace: true, // 删除空格

@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "autoprefixer": "^9.2.1",
     "babel-loader": "^8.0.4",
@@ -35,6 +36,7 @@
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
+    "@babel/runtime": "^7.1.2",
     "axios": "^0.18.0",
     "babel-preset-latest": "^6.24.1",
     "echarts": "^4.2.0-rc.2",

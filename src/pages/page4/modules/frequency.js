@@ -39,12 +39,12 @@ const init = function () {
     chart.setOption(defaults);
 }
 const update = function ({names, value}) {
-    const xAxisData = names
+    const legend = []
     const series = []
     value.forEach(({ key, count, per}, i) => {
-        // xAxisData.push(key)
+        legend.push(key)
         series.push({
-            name: names[i],
+            name: key,
             type: 'bar',
             data: count,
             barWidth: 5,
@@ -53,7 +53,7 @@ const update = function ({names, value}) {
             }
         })
         series.push({
-            name: names[i],
+            name: key,
             type: 'line',
             yAxisIndex: 1,
             data: per,
@@ -64,10 +64,10 @@ const update = function ({names, value}) {
     })
     const option = {
         legend: {
-            data: names
+            data: legend
         },
         xAxis: [{
-            data: xAxisData
+            data: names
         }],
         series
     }

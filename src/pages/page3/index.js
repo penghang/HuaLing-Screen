@@ -12,7 +12,7 @@ import {
 } from './modules'
 import { 
     getProvinceAgency, 
-    getProvinceCarSeriesAll, 
+    getProvinceCarSeries, 
     getProvinceCarType, 
     getProvinceEngineType,
     getProvinceCarLatLng,
@@ -20,11 +20,11 @@ import {
 } from '@/api'
 import {
     provinceAgencyStore,
-    provinceCarLatLngStore,
-    provinceYearOfProductionStore,
-    provinceCarSeriesAllStore,
+    provinceCarSeriesStore,
+    provinceCarTypeStore,
     provinceEngineTypeStore,
-    provinceCarTypeStore
+    provinceCarLatLngStore,
+    provinceYearOfProductionStore
 } from '@/store'
 let lastProvince = currentProvince
 const init = function () {
@@ -41,7 +41,7 @@ const modules = [
 ]
 const apis = [
     getProvinceAgency,
-    getProvinceCarSeriesAll,
+    getProvinceCarSeries,
     getProvinceCarType,
     getProvinceEngineType,
     getProvinceCarLatLng,
@@ -49,11 +49,11 @@ const apis = [
 ]
 const stores = [
     provinceAgencyStore,
-    provinceCarLatLngStore,
-    provinceYearOfProductionStore,
-    provinceCarSeriesAllStore,
+    provinceCarSeriesStore,
+    provinceCarTypeStore,
     provinceEngineTypeStore,
-    provinceCarTypeStore
+    provinceCarLatLngStore,
+    provinceYearOfProductionStore
 ]
 const initModules = () => {
     modules.forEach(m => {
@@ -72,7 +72,7 @@ const loadCache = () => {
 const loadRemote = () => {
     // console.log(lastProvince, currentProvince)
     apis.forEach((api, i) => {
-        api().then(({ data }) => {
+        api(currentProvince).then(({ data }) => {
             modules[i].update(data)
             stores[i].set(currentProvince, data)
         })

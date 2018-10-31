@@ -1,36 +1,20 @@
 import echarts from 'echarts'
-import { eConfig } from '../../config'
-const { toolbox } = eConfig
+import { eConfig, barColors } from '../../config'
+const { toolbox, grid1: grid, xAxis, yAxis } = eConfig
 let page, chart
-const colors = ['#d4a731', '#246ae4', '#976cd3', '#3c42a4', '#25cc98']
+const colorLength = barColors.length
 const defaults = {
     toolbox,
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        type: 'scroll',
-        orient: 'vertical',
-        right: "15%",
-        y: 'center',
-        textStyle: {
-            color: '#b5c6c8'
-        },
-        data: []
-    },
+    grid,
+    xAxis,
+    yAxis,
     series: [
         {
-            type: 'pie',
-            radius: '55%',
-            center: ['40%', '50%'],
+            type: 'bar',
+            barWidth: '60%',
             data: [],
             itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
+                barBorderRadius: [3, 3, 0, 0]
             }
         }
     ]
@@ -41,27 +25,27 @@ const init = function () {
     chart.setOption(defaults)
 }
 const update = function (data) {
-    const legendData = []
-    const seriesData = []
-    data.forEach(({name, num: value}, i) => {
-        legendData.push(name)
-        seriesData.push({
-            name,
-            value,
+    const x = [], y = []
+    let i = 0
+    data.forEach(({ name, num }) => {
+        x.push(name)
+        y.push({
+            value: num,
             itemStyle: {
-                color: colors[i]
+                color: barColors[(i++) % colorLength]
             }
         })
     })
     const option = {
-        legend: {
-            data: legendData
+        xAxis: {
+            data: x
         },
         series: [{
-            data: seriesData
+            data: y
         }]
     }
     chart.setOption(option)
 }
+
 console.log('load file modules/page3/modules/carType.js')
 export default { init, update }
