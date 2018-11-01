@@ -80,25 +80,35 @@
         font-family: Roboto;
         font-weight: bold;
         font-size: 1.6rem;
-        background: linear-gradient(to bottom, #00ffe7, #09e7ff);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
         color: #00ffe7;
     }
     .card-color1 .card-num {
-        background: linear-gradient(to bottom, #00ffe7, #09e7ff);
-        background-clip: text;
         color: #00ffe7;
     }
     .card-color2 .card-num {
-        background: linear-gradient(to bottom, #2af8ff, #53c4ff);
-        background-clip: text;
         color: #2af8ff;
     }
     .card-color3 .card-num {
-        background: linear-gradient(to bottom, #04ff6f, #00ddaa);
-        background-clip: text;
         color: #04ff6f;
+    }
+    @supports (-webkit-text-fill-color: transparent) {
+        .card-num {
+            background: linear-gradient(to bottom, #00ffe7, #09e7ff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-color1 .card-num {
+            background: linear-gradient(to bottom, #00ffe7, #09e7ff);
+            background-clip: text;
+        }
+        .card-color2 .card-num {
+            background: linear-gradient(to bottom, #2af8ff, #53c4ff);
+            background-clip: text;
+        }
+        .card-color3 .card-num {
+            background: linear-gradient(to bottom, #04ff6f, #00ddaa);
+            background-clip: text;
+        }
     }
     /*地图*/
     .chart-desktopmap-wrapper{

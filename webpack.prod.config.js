@@ -15,8 +15,8 @@ module.exports = {
     },
     output: {
         path: resolve('dist'),
-        filename: 'js/[name]-[hash:8].bundle.js',
-        chunkFilename: 'js/[name].[hash:8].chunk.js',
+        filename: 'js/[name]-[chunkhash:8].bundle.js',
+        chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
         publicPath: './'
     },
     resolve: {
@@ -133,7 +133,7 @@ module.exports = {
             }
         }),
         new extractTextWebpackPlugin({
-            filename: 'css/[name].[hash:8].bundle.css'
+            filename: 'css/[name].[chunkhash:8].bundle.css'
         })
     ]
 }

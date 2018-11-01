@@ -45,11 +45,9 @@ const init = function () {
 }
 const update = function(data) {
     const x = [], y = []
-    let i = data.length - 1
-    data.forEach(row => {
-        x[i] = row.time
-        y[i] = row.count
-        i--
+    data.forEach(({time, count}) => {
+        x.push(time)
+        y.push(count)
     })
     const option = {
         xAxis: {
