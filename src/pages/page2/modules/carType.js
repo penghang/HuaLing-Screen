@@ -1,11 +1,17 @@
 import echarts from 'echarts'
 import { eConfig, barColors } from '../../config'
-const { toolbox, grid, xAxis, yAxis } = eConfig
+const { toolbox,tooltip ,grid, xAxis, yAxis } = eConfig
 let page, chart
 const colorLength = barColors.length
 const defaults = {
     toolbox,
-    grid,
+    tooltip,
+    grid: {
+      left: 80,
+      rigth: 20,
+      top: 10,
+      bottom: 40
+    },
     xAxis,
     yAxis,
     series: [
@@ -38,7 +44,10 @@ const update = function (data) {
     })
     const option = {
         xAxis: {
-            data: x
+            data: x,
+            axisLabel:{
+              rotate:30
+            }
         },
         series: [{
             data: y

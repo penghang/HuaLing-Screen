@@ -34,6 +34,7 @@ const init = function () {
     chart.setOption(defaults);
 }
 const update = function (data) {
+  //console.log(data)
     const legend = []
     const series = []
     let i = 0

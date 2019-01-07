@@ -1,9 +1,10 @@
 import echarts from 'echarts'
 import { eConfig, createLineargradientColor } from '../../config'
-const { toolbox, grid1: grid, xAxis, yAxis } = eConfig
+const { toolbox, tooltip, grid1: grid, xAxis, yAxis } = eConfig
 let page, chart
 const defaults = {
     toolbox,
+    tooltip,
     grid,
     color: createLineargradientColor('#2067e4', '#6498e8'),
     xAxis,
@@ -32,7 +33,10 @@ const update = function (data) {
     })
     const option = {
         xAxis: {
-            data: x
+            data: x,
+            axisLabel:{
+              show : false,
+            },
         },
         series: [{
             data: y

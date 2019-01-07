@@ -1,11 +1,12 @@
 import echarts from 'echarts'
 import { eConfig, mixColors } from '../../config'
-const { toolbox, grid2: grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
+const { toolbox, tooltip,grid2: grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
 const { type, axisTick, axisLabel, axisLine, nameTextStyle } = yAxis
 let page, chart
 const colorLength = mixColors.length
 const defaults = {
     toolbox,
+    tooltip,
     grid,
     legend: {
         textStyle: {

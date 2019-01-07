@@ -1,9 +1,10 @@
 import echarts from 'echarts'
 import { eConfig, color1 as color } from '../../config'
-const { toolbox, grid, xAxis, yAxis } = eConfig
+const { toolbox,tooltip ,grid, xAxis, yAxis } = eConfig
 let page, chart
 const defaults = {
     toolbox,
+    tooltip,
     grid,
     color,
     xAxis,
@@ -27,12 +28,13 @@ const init = function () {
 const update = function (data) {
     const x = [], y = []
     data.forEach(row => {
-        x.push(row.name)
+        x.push(row.name.replace('CM6D',''))
         y.push(row.num)
     })
     const option = {
         xAxis: {
-            data: x
+            data: x,
+            
         },
         series: [{
             data: y

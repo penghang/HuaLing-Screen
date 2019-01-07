@@ -18,7 +18,8 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         compress: true,
-        host: 'localhost',
+        host: '10.7.51.29',
+        disableHostCheck: true,
         port: 9527,
         open: true,
         inline: true,
@@ -29,9 +30,9 @@ module.exports = {
         },
         proxy: {
             // 代理到YApi的Mock地址
-            // '/': 'http://127.0.0.1:3000/mock/11'
+            //'/': 'http://10.7.51.25:3000/mock/11'
             // 代理到联调地址
-            '/': 'http://106.74.36.17:81/FullScreen'
+             '/': 'http://106.74.36.17:81/FullScreen'
         }
     },
     // output: {

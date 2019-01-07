@@ -5,7 +5,7 @@ const ACTIVE = 'active'
 const ANITATION_TYPE = 'fade'
 const IN = 'in'
 const OUT = 'out'
-const PAGE_COUNT = 5
+const PAGE_COUNT = 4
 let current = 0
 let playing = false
 
@@ -39,11 +39,13 @@ const animate = function (from, to, isReverse) {
 }
 const isPrevent = dom => {
     if (dom == document.body) {
-        return false;
+      return false;
     } else if (dom.classList.contains('e-prevent')) {
-        return true
+      return true
+    }else if(dom.classList.contains('table-in')){
+      return true
     } else {
-        return isPrevent(dom.parentNode)
+      return isPrevent(dom.parentNode)
     }
 }
 const scrollFunc = function (event) {
@@ -63,11 +65,18 @@ if (document.addEventListener) {
 }
 window.onmousewheel = document.onmousewheel = scrollFunc;
 document.onkeydown = function (event) {
+    // if(document.querySelector('.table-in')||document.querySelector('.e-prevent')){
+    //   return
+    // }
+    
     event = event || window.event;
+    
     var c = event.keyCode;
     if (c == 40 || c == 32 || c == 39) {
+      
         pageDown();
     } else if (c == 38 || c == 37) {
+     
         pageUp();
     }
 }

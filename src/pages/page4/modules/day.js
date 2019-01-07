@@ -1,13 +1,25 @@
 import echarts from 'echarts'
 import { eConfig, barColors } from '../../config'
-const { toolbox, grid2: grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
+import {data1} from '../../../mockdata/page4data'
+const { toolbox,tooltip ,grid2: grid, xAxis2: xAxis, yAxis2: yAxis } = eConfig
 const { type, axisTick, axisLabel, axisLine } = yAxis
 const colorLength = barColors.length
 let page, chart
 const defaults = {
     toolbox,
+    // tooltip,
     grid,
     xAxis,
+    tooltip:{
+      formatter:function(params){
+        if(params.componentSubType==='line'){
+          return `${params.name}:${params.value}H`
+        }
+        if(params.componentSubType==='bar'){
+          return `${params.name}:${params.value}km`
+        }
+      }
+    },
     yAxis: [
         {
             ...yAxis,
@@ -53,11 +65,12 @@ const init = function () {
     chart = echarts.init(page.querySelector('.js-day-chart'))
     chart.setOption(defaults);
 }
-const update = function (data) {
+const update = function () {
+  // console.log(data1)
     const xAxisData = []
     const mileageData = []
     const timeData = []
-    data.forEach(({name, mileage, time}, i) => {
+    data1.forEach(({name, mileage, time}, i) => {
         xAxisData.push(name)
         mileageData.push({
             value: mileage,

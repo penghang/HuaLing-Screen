@@ -38,6 +38,7 @@ const eConfig = {
             }
         }
     },
+    tooltip:{},
     grid1: {
         left: 50,
         right: 20,

@@ -1,10 +1,11 @@
 import echarts from 'echarts'
 import { eConfig, barColors } from '../../config'
-const { toolbox, grid1: grid, xAxis, yAxis } = eConfig
+const { toolbox,tooltip ,grid1: grid, xAxis, yAxis } = eConfig
 let page, chart
 const colorLength = barColors.length
 const defaults = {
     toolbox,
+    tooltip,
     grid,
     xAxis,
     yAxis,

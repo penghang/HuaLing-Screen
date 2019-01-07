@@ -1,8 +1,9 @@
 import echarts from 'echarts'
+import table from '../../table/index'
 // import '@/lib/echarts4/province/beijing.js'
 import { eConfig, currentProvince } from '../../config'
-const { toolbox } = eConfig
-let page, mapChart, title, carnum
+const { toolbox} = eConfig
+let page, mapChart, title, carnum, tableprovince
 const colors = ['#184ca9', '#305aa6']
 const provinceName = {
     '北京': 'beijing',
@@ -44,13 +45,15 @@ const provinceName = {
 const getConfig = function (map, data1, data2) {
     return {
         toolbox,
-        tooltip: {
-            trigger: 'item'
-        },
+        // tooltip,
+        // tooltip: {
+        //     trigger: 'item'
+        // },
         geo: {
             // top: 100,
             // left: 20,
             // right: 20,
+            // roam:true,
             map,
             label: {
                 emphasis: {
@@ -64,7 +67,12 @@ const getConfig = function (map, data1, data2) {
                     borderColor: '#0e1e43',
                     shadowBlur: 10,
                     shadowColor: 'rgba(13, 29, 64, 1)'
-                }
+                },
+                // emphasis: {
+                //   // borderWidth: 1,
+                //   areaColor: "#020613",
+                //   borderColor: '#0e1e43',
+                // }
             }
         },
         series: [{
@@ -75,10 +83,14 @@ const getConfig = function (map, data1, data2) {
             itemStyle: {
                 normal: {
                     color: colors[0]
+                },
+                emphasis:{
+                  color:colors[0],
+                  
                 }
             },
             large: true,
-            silent: true
+            silent: false
         }, {
             type: 'scatter',
             coordinateSystem: 'geo',
@@ -87,10 +99,14 @@ const getConfig = function (map, data1, data2) {
             itemStyle: {
                 normal: {
                     color: colors[1]
+                },
+                emphasis:{
+                  color:colors[1],
+                  
                 }
             },
             large: true,
-            silent: true
+            silent: false
         }]
     }
 }
@@ -105,15 +121,21 @@ const getProvince = () => {
 }
 const update = ({ online, offline }) => {
     const province = getProvince()
+    tableprovince = province
     title.innerHTML = `${province}散点图`
     import(/* webpackChunkName: "province", webpackMode: "lazy" */`@/lib/echarts4/province/${provinceName[province]}.js`)
     .then(() => {
         const option = getConfig(province, online, offline)
+        //console.log(province, online, offline)
         if (!mapChart) {
             mapChart = echarts.init(page.querySelector(".js-lat-lng-province-chart"))
         }
-        mapChart.setOption(option, true)
+        mapChart.setOption(option)
+        mapChart.on("click",function(e){
+          table(tableprovince)
+        })
     })
+    
     carnum.innerHTML = online.length + offline.length
 }
 console.log('load file modules/page3/modules/latLng.js')

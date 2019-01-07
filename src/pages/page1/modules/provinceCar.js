@@ -150,6 +150,7 @@ const initMapChart = function() {
     mapChart = echarts.init(page.querySelector(".js-map-chart"))
     mapChart.setOption(option, true)
     mapChart.on('mapselectchanged', (opt) => {
+      // console.log(opt)
         const { name } = opt.batch[0]
         setProvince(name)
         pageTo(3)

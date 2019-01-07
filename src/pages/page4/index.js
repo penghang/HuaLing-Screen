@@ -2,7 +2,8 @@ import pageTpl from './index.html'
 
 import {
     Day,
-    Frequency
+    // Frequency,
+    Month
 } from './modules'
 import { 
     getDayAvgMileageAndTime, 
@@ -10,7 +11,7 @@ import {
 } from '@/api'
 import {
     dayAvgMileageAndTimeStore,
-    mielageFrequencyStore
+    carTypeMonthMileageStore
 } from '@/store'
 
 const init = function () {
@@ -19,7 +20,8 @@ const init = function () {
 init()
 const modules = [
     Day,
-    Frequency
+    // Frequency,
+    Month
 ]
 const apis = [
     getDayAvgMileageAndTime, 
@@ -27,7 +29,7 @@ const apis = [
 ]
 const stores = [
     dayAvgMileageAndTimeStore,
-    mielageFrequencyStore
+    carTypeMonthMileageStore
 ]
 const initModules = () => {
     modules.forEach(m => {
@@ -38,23 +40,24 @@ const initModules = () => {
 const loadCache = () => {
     stores.forEach((s, i) => {
         s.get().then(data => {
-            data && modules[i].update(data)
+          //console.log(data)
+            modules[i].update(data)
         })
     })
 }
 
-const loadRemote = () => {
-    apis.forEach((api, i) => {
-        api().then(({ data }) => {
-            modules[i].update(data)
-            stores[i].set(data)
-        })
-    })
-}
+// const loadRemote = () => {
+//     apis.forEach((api, i) => {
+//         api().then(({ data }) => {
+//             modules[i].update(data)
+//             stores[i].set(data)
+//         })
+//     })
+// }
 
 initModules()
 loadCache()
-loadRemote()
+// loadRemote()
 
 const resize = () => {
     modules.forEach(m => {
