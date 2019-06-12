@@ -18,7 +18,7 @@ module.exports = {
         historyApiFallback: true,
         hot: true,
         compress: true,
-        host: '10.7.51.29',
+        // host: '10.7.51.29',
         disableHostCheck: true,
         port: 9527,
         open: true,
